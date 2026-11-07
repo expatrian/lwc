@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Toy + Grocery Outreach 2026 | Living Word Church, San Pedro</title>
+<title>Christmas Toy Campaign 2026 | Living Word Church, San Pedro</title>
 <meta name="description" content="Help Living Word Church give toys to San Pedro's children and groceries to their families this Christmas. Donate with crypto, or by tax-deductible check from the US.">
-<meta property="og:title" content="Toy + Grocery Outreach 2026 | Living Word Church, San Pedro">
-<meta property="og:description" content="Toys for San Pedro's children and groceries for their families this Christmas. Donate with crypto.">
+<meta property="og:title" content="Christmas Toy Campaign 2026 | Living Word Church, San Pedro">
+<meta property="og:description" content="Toys for San Pedro's children and groceries for their families this Christmas. Donate with crypto, or by check from the US.">
 <meta property="og:image" content="https://lwc-sanpedro.vercel.app/media/share.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -86,6 +86,13 @@ a:hover { text-decoration-thickness: 2px; }
 .btn-plain { background: transparent; color: var(--paper); }
 .btn-plain:hover { background: rgba(255, 255, 255, .1); }
 .btn-small { min-height: 42px; padding: 0 18px; font-size: 0.9375rem; }
+/* Nicky-style crypto button: black, white text */
+.btn-nicky { gap: 10px; background: #000; color: #fff; border-color: #000; }
+.btn-nicky:hover { background: #1c1c1c; border-color: #1c1c1c; }
+.night .btn-nicky { border-color: rgba(255, 255, 255, .85); }
+.btn-nicky .nicky-n { width: 22px; height: 22px; display: block; }
+.btn-quiet { background: transparent; color: var(--bleacher); border-color: #B9D6CF; }
+.btn-quiet:hover { background: var(--court); }
 @media (prefers-reduced-motion: reduce) { .btn, .btn:hover { transition: none; transform: none; } }
 
 /* Hero */
@@ -93,16 +100,16 @@ a:hover { text-decoration-thickness: 2px; }
   display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 24px;
   padding-block: clamp(12px, 3vw, 36px) clamp(24px, 3vw, 36px);
 }
-.campaign {
-  display: inline-block; margin: 0 0 22px; padding: 6px 14px 7px;
-  background: var(--ribbon); color: var(--line);
-  font-weight: 700; font-size: 0.9375rem; border-radius: 6px;
-}
 .hero h1 {
-  margin: 0; max-width: 17ch; text-wrap: balance;
-  font-size: clamp(2.4rem, 5.6vw, 4.75rem);
-  font-weight: 800; line-height: 0.98; letter-spacing: -0.025em;
+  margin: 0; max-width: 14ch; text-wrap: balance;
+  font-size: clamp(2.75rem, 6.6vw, 5.75rem);
+  font-weight: 800; line-height: 0.95; letter-spacing: -0.03em;
   font-variation-settings: "opsz" 96;
+}
+.subhead {
+  margin: 18px 0 0; max-width: 28ch; text-wrap: balance;
+  font-size: clamp(1.375rem, 2.5vw, 2rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.01em;
+  color: var(--tinsel);
 }
 .lead { margin: 24px 0 0; max-width: 52ch; font-size: clamp(1.125rem, 1.6vw, 1.3125rem); line-height: 1.55; color: var(--mist); }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
@@ -110,16 +117,10 @@ a:hover { text-decoration-thickness: 2px; }
 @keyframes bob { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
 @media (prefers-reduced-motion: reduce) { .santa { animation: none; } }
 
-/* Photo line: the children with their gifts */
-.line {
-  --edge: max(var(--gutter), calc((100vw - 1200px) / 2 + var(--gutter)));
-  display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
-  padding: 8px var(--edge) 18px;
-  scroll-padding-inline: var(--edge);
-  scrollbar-width: thin; scrollbar-color: var(--mist) transparent;
-}
-.line figure { margin: 0; flex: 0 0 clamp(210px, 25vw, 330px); scroll-snap-align: start; }
-.line img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; border-radius: 10px; background: #13504f; border: 4px solid var(--line); }
+/* Photo grid: the children with their gifts (wraps, never scrolls sideways) */
+.photos { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; padding-top: 8px; }
+.photos figure { margin: 0; }
+.photos img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; border-radius: 10px; background: #13504f; border: 4px solid var(--line); }
 .line-foot { display: flex; justify-content: space-between; align-items: flex-end; min-height: 120px; }
 .line-caption { margin: 4px 0 0; font-size: 0.9375rem; color: var(--mist); }
 .reindeer-peek { width: clamp(110px, 12vw, 150px); margin-bottom: -46px; align-self: flex-end; }
@@ -189,6 +190,29 @@ h2 {
 .give-foot { display: flex; justify-content: flex-end; margin-top: 24px; }
 .reindeer-hat { width: clamp(110px, 12vw, 150px); margin-bottom: calc(-1 * clamp(64px, 9vw, 120px) - 46px); }
 
+/* Map: Santa over Belize */
+.where-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(32px, 5vw, 64px); align-items: center; }
+.where p { margin: 0 0 16px; max-width: 46ch; }
+.map { width: 100%; height: auto; display: block; border-radius: 16px; border: 4px solid var(--bleacher); background: #BFE6EA; }
+.map-sleigh { animation: glide 5s ease-in-out infinite; }
+.map-gifts { animation: drop 5s ease-in-out infinite; }
+.map-pulse { transform-box: fill-box; transform-origin: center; animation: pulse 2.4s ease-out infinite; }
+@keyframes glide { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-6px, 6px); } }
+@keyframes drop { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-4px, 8px); } }
+@keyframes pulse { 0% { transform: scale(.6); opacity: .5; } 100% { transform: scale(1.6); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .map-sleigh, .map-gifts, .map-pulse { animation: none; } }
+
+/* Before-you-go dialog for crypto donations */
+.leave { width: min(520px, calc(100vw - 32px)); padding: 0; border: 0; border-radius: 18px; background: var(--paper); color: var(--bleacher); box-shadow: 0 24px 60px rgba(5, 30, 30, .45); }
+.leave::backdrop { background: rgba(10, 58, 59, .72); }
+.leave-body { padding: 28px 28px 24px; }
+.leave h2 { font-size: clamp(1.5rem, 4vw, 1.875rem); margin: 0 0 12px; }
+.leave p { margin: 0 0 14px; }
+.leave ul { margin: 0 0 22px; padding-left: 1.2em; }
+.leave li { margin-bottom: 8px; }
+.leave-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.leave :focus-visible { outline-color: var(--bleacher); }
+
 /* Footer */
 footer { background: var(--bleacher); color: var(--mist); padding-block: 44px; font-size: 0.9375rem; position: relative; z-index: 2; }
 footer p { margin: 0 0 6px; }
@@ -201,6 +225,9 @@ footer strong { color: var(--paper); }
   .years li { grid-template-columns: 1fr; gap: 4px; }
   .top .btn-small { display: none; }
   .line-foot { min-height: 96px; }
+  .photos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .where-grid { grid-template-columns: 1fr; }
+  .map { border-width: 3px; }
 }
 </style>
 </head>
@@ -279,11 +306,11 @@ footer strong { color: var(--paper); }
   <main id="top">
     <div class="wrap hero">
       <div>
-        <p class="campaign">Toy + Grocery Outreach 2026</p>
-        <h1>Toys and groceries for San Pedro families this Christmas</h1>
+        <h1>Christmas Toy Campaign 2026</h1>
+        <p class="subhead">Toys and groceries for San Pedro families</p>
         <p class="lead">Every December, Living Word Church takes groceries to families' homes and hands out toys to the children of San Pedro. This year you can help with a crypto donation, or by check from the US.</p>
         <div class="actions">
-          <a class="btn btn-gift" href="#give" data-donate>Donate with crypto</a>
+          <a class="btn btn-nicky" href="#give" data-donate>Donate with crypto</a>
           <a class="btn btn-plain" href="#film">Watch the outreach video</a>
         </div>
       </div>
@@ -291,17 +318,17 @@ footer strong { color: var(--paper); }
       <svg class="santa" viewBox="0 0 240 260" role="img" aria-label="A smiling Santa Claus"><use href="#santa"/></svg>
     </div>
 
-    <div class="line" tabindex="0" role="region" aria-label="Photos from the toy giveaway, scrolls sideways">
-      <figure><img src="/media/crane-truck-739.webp" srcset="/media/crane-truck-480.webp 480w, /media/crane-truck-739.webp 739w" sizes="(max-width: 840px) 210px, 330px" width="739" height="1108" alt="A smiling toddler holds a boxed toy crane truck."></figure>
-      <figure><img src="/media/keyboard-739.webp" srcset="/media/keyboard-480.webp 480w, /media/keyboard-739.webp 739w" sizes="(max-width: 840px) 210px, 330px" width="739" height="1108" alt="A girl holds a toy electronic keyboard at the evening giveaway."></figure>
-      <figure><img src="/media/police-car-739.webp" srcset="/media/police-car-480.webp 480w, /media/police-car-739.webp 739w" sizes="(max-width: 840px) 210px, 330px" width="739" height="1108" alt="A boy makes peace signs behind a boxed toy police car." loading="lazy"></figure>
-      <figure><img src="/media/three-friends-739.webp" srcset="/media/three-friends-480.webp 480w, /media/three-friends-739.webp 739w" sizes="(max-width: 840px) 210px, 330px" width="739" height="1108" alt="Three children hold up their new toys in front of the bleachers." loading="lazy"></figure>
-      <figure><img src="/media/mermaid-doll-739.webp" srcset="/media/mermaid-doll-480.webp 480w, /media/mermaid-doll-739.webp 739w" sizes="(max-width: 840px) 210px, 330px" width="739" height="1108" alt="A girl holds a boxed mermaid doll." loading="lazy"></figure>
-      <figure><img src="/media/truck-hauler-739.webp" srcset="/media/truck-hauler-480.webp 480w, /media/truck-hauler-739.webp 739w" sizes="(max-width: 840px) 210px, 330px" width="739" height="1108" alt="A child grins over a toy emergency truck hauler." loading="lazy"></figure>
-      <figure><img src="/media/monster-truck-739.webp" srcset="/media/monster-truck-480.webp 480w, /media/monster-truck-739.webp 739w" sizes="(max-width: 840px) 210px, 330px" width="739" height="1108" alt="A boy holds a large toy monster truck." loading="lazy"></figure>
-      <figure><img src="/media/king-cruiser-739.webp" srcset="/media/king-cruiser-480.webp 480w, /media/king-cruiser-739.webp 739w" sizes="(max-width: 840px) 210px, 330px" width="739" height="1108" alt="A small boy holds a boxed toy car set and a cup of juice." loading="lazy"></figure>
-      <figure><img src="/media/kitchen-set-739.webp" srcset="/media/kitchen-set-480.webp 480w, /media/kitchen-set-739.webp 739w" sizes="(max-width: 840px) 210px, 330px" width="739" height="1108" alt="A toddler stands beside a new toy kitchen set." loading="lazy"></figure>
-      <figure><img src="/media/city-rescue-739.webp" srcset="/media/city-rescue-480.webp 480w, /media/city-rescue-739.webp 739w" sizes="(max-width: 840px) 210px, 330px" width="739" height="1108" alt="A toddler carries a fire-rescue toy set almost as big as he is." loading="lazy"></figure>
+    <div class="wrap photos">
+      <figure><img src="/media/crane-truck-739.webp" srcset="/media/crane-truck-480.webp 480w, /media/crane-truck-739.webp 739w" sizes="(max-width: 760px) 50vw, 230px" width="739" height="1108" alt="A smiling toddler holds a boxed toy crane truck."></figure>
+      <figure><img src="/media/keyboard-739.webp" srcset="/media/keyboard-480.webp 480w, /media/keyboard-739.webp 739w" sizes="(max-width: 760px) 50vw, 230px" width="739" height="1108" alt="A girl holds a toy electronic keyboard at the evening giveaway."></figure>
+      <figure><img src="/media/police-car-739.webp" srcset="/media/police-car-480.webp 480w, /media/police-car-739.webp 739w" sizes="(max-width: 760px) 50vw, 230px" width="739" height="1108" alt="A boy makes peace signs behind a boxed toy police car." loading="lazy"></figure>
+      <figure><img src="/media/three-friends-739.webp" srcset="/media/three-friends-480.webp 480w, /media/three-friends-739.webp 739w" sizes="(max-width: 760px) 50vw, 230px" width="739" height="1108" alt="Three children hold up their new toys in front of the bleachers." loading="lazy"></figure>
+      <figure><img src="/media/mermaid-doll-739.webp" srcset="/media/mermaid-doll-480.webp 480w, /media/mermaid-doll-739.webp 739w" sizes="(max-width: 760px) 50vw, 230px" width="739" height="1108" alt="A girl holds a boxed mermaid doll." loading="lazy"></figure>
+      <figure><img src="/media/truck-hauler-739.webp" srcset="/media/truck-hauler-480.webp 480w, /media/truck-hauler-739.webp 739w" sizes="(max-width: 760px) 50vw, 230px" width="739" height="1108" alt="A child grins over a toy emergency truck hauler." loading="lazy"></figure>
+      <figure><img src="/media/monster-truck-739.webp" srcset="/media/monster-truck-480.webp 480w, /media/monster-truck-739.webp 739w" sizes="(max-width: 760px) 50vw, 230px" width="739" height="1108" alt="A boy holds a large toy monster truck." loading="lazy"></figure>
+      <figure><img src="/media/king-cruiser-739.webp" srcset="/media/king-cruiser-480.webp 480w, /media/king-cruiser-739.webp 739w" sizes="(max-width: 760px) 50vw, 230px" width="739" height="1108" alt="A small boy holds a boxed toy car set and a cup of juice." loading="lazy"></figure>
+      <figure><img src="/media/kitchen-set-739.webp" srcset="/media/kitchen-set-480.webp 480w, /media/kitchen-set-739.webp 739w" sizes="(max-width: 760px) 50vw, 230px" width="739" height="1108" alt="A toddler stands beside a new toy kitchen set." loading="lazy"></figure>
+      <figure><img src="/media/city-rescue-739.webp" srcset="/media/city-rescue-480.webp 480w, /media/city-rescue-739.webp 739w" sizes="(max-width: 760px) 50vw, 230px" width="739" height="1108" alt="A toddler carries a fire-rescue toy set almost as big as he is." loading="lazy"></figure>
     </div>
     <div class="wrap line-foot">
       <p class="line-caption">Children at the church's Christmas toy giveaway.</p>
@@ -309,6 +336,101 @@ footer strong { color: var(--paper); }
     </div>
   </main>
 </div>
+
+<section class="where" aria-labelledby="where-title">
+  <div class="wrap where-grid">
+    <div>
+      <h2 id="where-title">Next stop: San Pedro, Belize</h2>
+      <p>San Pedro is the town on Ambergris Caye, an island off Belize's Caribbean coast. Living Word Church is here, and this is where every toy and grocery basket from the campaign is delivered.</p>
+    </div>
+    <svg class="map" viewBox="0 0 662 682" role="img" aria-labelledby="map-title map-desc">
+  <title id="map-title">Map of Belize</title>
+  <desc id="map-desc">A cartoon map of Belize with a pin on San Pedro, on Ambergris Caye off the northern coast. Santa's sleigh and two reindeer fly in from the Caribbean Sea, dropping gifts toward San Pedro.</desc>
+  <defs>
+    <symbol id="gift-mini" viewBox="0 0 40 40">
+      <rect x="4" y="14" width="32" height="24" rx="4" fill="#C8232C" stroke="#0E4A4A" stroke-width="2"/>
+      <rect x="2" y="9" width="36" height="9" rx="3" fill="#C8232C" stroke="#0E4A4A" stroke-width="2"/>
+      <rect x="17" y="9" width="6" height="29" fill="#F6C445"/>
+      <path d="M20 9 C 14 1 6 2 8 7 C 9 10 16 10 20 9 Z M20 9 C 26 1 34 2 32 7 C 31 10 24 10 20 9 Z" fill="#F6C445" stroke="#0E4A4A" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="deer-fly" viewBox="-60 -64 104 92">
+      <g stroke="#8A5A2B" stroke-width="6" stroke-linecap="round" fill="none">
+        <path d="M-16 6 L-36 12"/><path d="M-11 9 L-26 22"/><path d="M14 6 L36 2"/><path d="M10 9 L30 18"/>
+      </g>
+      <circle cx="27" cy="-6" r="5.5" fill="#fff"/>
+      <ellipse cx="0" cy="0" rx="27" ry="13.5" fill="#B9773F"/>
+      <ellipse cx="-2" cy="6" rx="18" ry="6" fill="#E9C9A0"/>
+      <path d="M-14 -4 C -22 -14 -26 -20 -28 -26 L -19 -31 C -15 -22 -9 -14 -4 -9 Z" fill="#B9773F"/>
+      <g stroke="#7A4A22" stroke-width="3.6" stroke-linecap="round" fill="none">
+        <path d="M-27 -38 C -27 -47 -23 -53 -16 -58"/><path d="M-25 -48 C -30 -51 -35 -52 -40 -51"/>
+        <path d="M-33 -37 C -37 -44 -40 -49 -46 -52"/>
+      </g>
+      <ellipse cx="-21" cy="-36" rx="7" ry="3.5" transform="rotate(-30 -21 -36)" fill="#A8693A"/>
+      <ellipse cx="-30" cy="-30" rx="12.5" ry="10.5" fill="#B9773F"/>
+      <ellipse cx="-40" cy="-26.5" rx="7.5" ry="6.5" fill="#E9C9A0"/>
+      <circle cx="-46.5" cy="-28" r="3.8" fill="#3A2416"/>
+      <circle cx="-31" cy="-33.5" r="2.4" fill="#2B1B14"/>
+      <rect x="-15" y="-13.5" width="8" height="27" rx="2" fill="#C8232C"/>
+      <circle cx="-11" cy="14" r="3.6" fill="#F6C445" stroke="#9E7A12" stroke-width="1"/>
+    </symbol>
+  </defs>
+
+  <rect width="662" height="682" fill="#BFE6EA"/>
+  <g fill="none" stroke="#93CDD4" stroke-width="2.5" stroke-linecap="round"><path d="M470 250 q6 -6 12 0 t12 0 t12 0"/><path d="M560 300 q6 -6 12 0 t12 0 t12 0"/><path d="M430 420 q6 -6 12 0 t12 0 t12 0"/><path d="M600 420 q6 -6 12 0 t12 0 t12 0"/><path d="M500 560 q6 -6 12 0 t12 0 t12 0"/><path d="M620 560 q6 -6 12 0 t12 0 t12 0"/><path d="M420 600 q6 -6 12 0 t12 0 t12 0"/><path d="M560 640 q6 -6 12 0 t12 0 t12 0"/><path d="M610 200 q6 -6 12 0 t12 0 t12 0"/><path d="M470 340 q6 -6 12 0 t12 0 t12 0"/></g>
+
+  <g fill="#F1EBDD" stroke="#C9BFA6" stroke-width="2" stroke-linejoin="round">
+    <path d="M-84 -88L433 -88L431.9 -82.4L428.9 -78.3L431.1 -73.4L428.1 -66.4L423.6 -55.6L419 -48.6L414.5 -19.6L406.9 7.2L403.1 13.5L398.6 19.4L394.1 26.1L391 34.3L390.3 43.6L391 53.6L391 58.1L388 62.5L387.3 66.2L385.8 81.5L384.2 86.7L373.7 101.5L372.9 104.9L372.1 107.8L369.1 114.9L368.4 118.2L368.4 132.7L366.9 132.7L366.9 126.8L366.1 122L362.3 126.4L360 125.3L359.3 122.3L360.8 120.8L362.3 118.2L363.8 112.7L364.6 106.7L364.6 103.8L363.8 106.4L362.3 108.2L361.6 110.4L360 111.6L358.5 109L359.3 107.1L360.8 104.5L361.6 101.2L360.8 100.8L357.8 97.1L357.8 94.5L357.8 92.2L357 90.4L351 89.3L349.5 88.2L350.2 86.3L351 84.4L351 80.7L349.5 78.5L347.9 77.4L343.4 77L338.1 75.5L326.8 69.2L322.2 67.7L320 66.2L319.2 62.9L319.2 59.6L320 58.1L326.8 49.9L325.3 45.1L327.5 40.2L331.3 36.1L332.8 32.4L332.8 30.6L335.1 26.9L335.8 24.3L334.3 22.8L332.8 21.7L332.8 20.5L332.8 19.1L333.6 17.6L333.6 16.8L335.1 7.5L335.1 2.7L333.6 -0.6L331.3 -4L329.8 -7.7L328.3 -16.6L323.8 -12.5L318.5 -6.9L313.9 -0.6L312.4 5.3L312.4 8.3L310.9 12.4L309.4 15.3L307.1 16.8L306.4 15L306.4 11.3L307.9 6.8L307.1 8.3L304.8 10.9L301.1 12L295.8 12L294.3 13.1L285.2 21.3L283.7 22.8L282.9 24.6L282.2 27.2L286.7 25.4L290.5 22L294.3 17.9L296.5 13.5L298 17.2L297.3 20.2L295.8 23.1L295 27.2L296.5 25.4L298 23.5L300.3 21.7L302.6 21.3L304.1 22.4L303.3 23.9L301.1 25.4L299.6 25.7L294.3 36.1L289.7 42.8L283.7 53.6L282.9 57L278.4 64L276.9 67.7L273.8 68.5L272.3 69.6L270.8 70L258 70L256.5 70.3L254.9 71.1L252.7 70.3L250.4 68.5L249.6 68.1L248.1 68.5L245.9 69.6L241.3 71.1L239.8 71.4L237.5 70.7L235.3 69.6L233 69.6L227 74.4L225.4 76.3L223.9 78.5L223.2 85.2L220.9 90.4L220.2 96L219.4 98.6L217.1 102.6L210.3 110.1L208.1 113.8L207.3 117.5L207.3 120.8L206.5 124.2L204.3 127.5L202 129.4L196 132.4L189.9 136.8L191.4 140.5L190.7 143.1L185.4 151.7L184.6 153.9L183.9 159.1L183.1 161.3L181.6 164.7L178.6 166.5L176.3 168L173.3 170.6L171.8 172.9L168.7 181.4L167.2 183.6L155.9 191.8L155.1 193.3L154.4 198.1L152.9 200L151.3 200.7L143 195.5L140 193.7L137 187.3L135.5 187L132.4 187.3L130.2 187L126.4 184.4L123.4 181L120.3 177.7L115.8 176.2L98.4 182.5L93.9 188.8L92.4 197.7L92.4 216.7L46.2 216.7L0.1 216.7L-46 216.7L-84 216.7L-84 -88ZM476.5 58.8L477.3 57L478 55.1L479.5 53.2L481 51.4L477.3 58.8L478.8 68.5L475.7 75.9L467.4 87.4L467.4 85.9L470.4 81.5L472.7 78.5L474.2 76.6L475 71.1L476.5 58.8ZM489.4 13.5L492.4 16.8L493.9 27.2L493.9 32.8L490.9 37.6L491.6 31.3L489.4 13.5Z"/><path d="M-84 770L-84 216.7L-46 216.7L0.1 216.7L46.2 216.7L92.4 216.7L93.1 264.2L94.6 325.5L94.6 387.9L90.8 445.2L87.1 506.8L85.6 529.5L82.5 575.2L76.5 626.1L76.5 636.5L76.5 639.4L78 642L80.3 640.6L83.3 639.8L84.8 639.4L88.6 638L104.5 638.7L110.5 637.6L117.3 637.6L136.2 642.4L143.8 639.4L146.8 640.6L154.4 646.9L161.2 645L171 646.9L177.8 651.3L178.6 655.8L183.1 656.5L204.3 670.3L202 679.9L202.8 681.4L208.1 681.4L210.3 680.7L211.1 678.8L211.1 677L210.3 675.8L208.8 674.4L208.8 672.5L210.3 672.1L211.8 672.5L214.1 672.1L214.9 670.3L215.6 666.6L217.1 664.3L219.4 662.5L220.2 660.2L220.9 656.9L219.4 651.7L218.6 648.4L220.2 648.4L220.2 650.6L221.7 651.3L223.9 649.8L230.7 651L233.8 649.8L228.5 645L226.2 643.2L221.7 641.3L220.2 639.1L218.6 636.5L217.1 634.6L208.8 629.4L205.8 626.4L208.8 622.7L211.8 624.6L217.9 627.2L220.2 628.7L227 635.4L230.7 637.6L242.1 647.2L264 657.3L270.8 664L273.1 664.7L282.2 673.2L289.7 676.2L287.5 677.3L286.7 679.2L286.7 681.8L285.2 684.8L283.7 682.9L280.6 684.4L277.6 686.2L273.8 687.4L269.3 687.7L268.5 689.2L261.7 700.4L251.9 710L237.5 721.5L230.7 726.7L212.6 741.2L194.4 755.7L176.3 769.8L-84 770Z"/><path d="M176.1 770L194.4 755.7L212.6 741.2L230.7 726.7L237.5 721.5L251.9 710L261.7 700.4L268.5 689.2L269.3 687.7L273.8 687.4L277.6 686.2L280.6 684.4L283.7 682.9L285.2 684.8L286.7 681.8L286.7 679.2L287.5 677.3L289.7 676.2L291.2 677L300.3 683.6L305.6 685.5L310.9 682.9L323 669.9L328.3 666.6L327.5 662.8L329.8 662.1L337.4 663.2L350.2 655.8L351.7 652.8L351.7 650.6L351 649.8L348.7 649.1L346.4 647.6L345.7 645.8L355.5 645L358.5 643.9L362.3 641.3L368.4 639.4L386.5 638L390.3 636.8L391.8 633.9L393.3 633.5L394.1 633.1L397.9 633.5L401.6 634.6L410.7 640.2L414.5 640.6L414.5 639.4L412.2 637.2L414.5 634.6L422.1 630.2L418.3 635.7L416.8 639.1L418.3 640.6L419.8 642.4L439.4 660.2L445.5 663.2L452.3 661.7L453.1 660.6L455.3 656.9L456.8 655.8L458.3 655.8L463.6 655.8L465.2 655L466.7 651.3L469.7 649.5L473.5 649.1L495.4 653.9L514.3 660.6L534 662.8L555.9 668L563.5 668.8L571.8 668L584.6 664L588.4 663.2L589.2 662.8L592.2 659.9L594.5 658.4L596.7 659.5L599.8 661L609.6 662.5L650.4 658.8L657.2 659.1L664 661.7L669.3 665.1L672.3 666.2L677.6 666.6L681.4 665.8L685.2 664L704.9 651.3L710.2 645.8L712.4 643.9L720 640.9L727.5 639.1L745.7 638.4L745.7 770L176.1 770ZM571.8 588.2L572.5 589.3L571 593L571.8 595.6L568 595.2L564.2 596.3L558.9 598.6L553.6 601.6L550.6 598.9L546.8 597.5L548.3 594.9L558.2 590.4L563.5 589.3L566.5 588.5L568.8 587.8L571.8 588.2ZM628.5 553.3L630 548.1L636.1 542.9L644.4 537.7L651.2 534.7L664 528.7L677.6 524.3L686.7 521.7L692.8 520.9L701.1 521.3L707.9 521.7L717.7 521.7L713.9 523.2L709.4 525.4L704.9 523.9L698.8 525.8L694.3 524.7L690.5 525.4L689 525.8L686 528L682.9 528.4L679.9 529.1L676.1 532.1L668.6 535.8L661 538.8L652.7 544.3L645.9 546.6L641.3 547.3L637.6 550.3L634.5 553.6L630 556.6L628.5 553.3Z"/>
+  </g>
+
+  <path d="M92.4 216.7L92.4 197.7L93.9 188.8L98.4 182.5L115.8 176.2L120.3 177.7L123.4 181L126.4 184.4L130.2 187L132.4 187.3L135.5 187L137 187.3L140 193.7L143 195.5L151.3 200.7L152.9 200L154.4 198.1L155.1 193.3L155.9 191.8L167.2 183.6L168.7 181.4L171.8 172.9L173.3 170.6L176.3 168L178.6 166.5L181.6 164.7L183.1 161.3L183.9 159.1L184.6 153.9L185.4 151.7L190.7 143.1L191.4 140.5L190.7 137.6L196 132.4L202 129.4L204.3 127.5L206.5 124.2L207.3 121.6L207.3 117.5L208.1 113.8L210.3 110.1L217.1 102.6L219.4 98.6L220.2 96L220.9 90.4L223.2 85.2L223.9 78.5L225.4 76.3L227 74.4L233 69.6L235.3 69.6L237.5 70.7L239.8 71.4L241.3 71.1L245.9 69.6L248.1 68.5L249.6 68.1L250.4 68.5L252.7 70.3L254.2 71.4L256.5 70.3L258 70L270.8 70L272.3 70L272.3 71.1L276.1 74L271.6 79.6L255.7 91.1L254.2 94.5L256.5 97.8L259.5 98.2L269.3 93.4L268.5 96.7L266.3 100L261.7 106.4L260.2 108.2L261 109.3L262.5 109L264 107.8L267.8 103.8L274.6 98.9L278.4 97.1L281.4 96.7L286.7 97.1L292.7 100L295 101.2L299.6 100.4L306.4 96L313.2 93.7L315.4 93.4L316.9 94.1L316.2 97.4L315.4 99.3L310.9 102.6L306.4 104.5L305.6 105.6L305.6 107.8L307.1 108.6L308.6 107.8L310.1 105.2L311.7 103.8L313.9 103L316.2 102.6L316.9 103.8L318.5 129.8L316.9 149.8L316.2 153.5L313.2 158.7L312.4 162.1L304.8 182.1L301.1 184.7L292 201.8L293.5 207.8L291.2 226L285.9 244.2L284.4 247.9L279.1 254.2L276.9 258.3L275.4 263.1L276.9 268.3L279.1 270.9L286.7 275L288.2 278L290.5 279.8L298.8 281.7L301.1 283.2L298 287.6L292.7 287.6L287.5 286.9L285.2 288.8L284.4 292.1L281.4 302.9L276.1 321.4L273.8 343.7L273.8 348.2L273.1 356.7L274.6 361.6L275.4 365.7L275.4 368.3L276.9 373.1L277.6 376.1L279.1 377.2L283.7 378.7L286.7 382L288.2 386.1L289 390.9L289.7 398L291.2 403.2L290.5 405.8L289 406.5L287.5 406.1L285.2 406.9L282.9 409.1L279.9 412.5L277.6 416.5L276.9 419.9L277.6 424L281.4 430.3L282.2 434.4L283.7 434.8L284.4 435.9L283.7 437L282.9 437.4L280.6 437L279.1 437L276.9 439.2L275.4 440.7L275.4 442.6L274.6 443.7L273.8 444.8L273.1 446.3L272.3 448.5L272.3 451.1L273.1 454.4L273.8 456.7L271.6 472.3L270.8 474.9L268.5 476.7L266.3 479.3L264 488.6L263.3 491.2L262.5 494.9L264 500.5L262.5 502.7L261 504.6L260.2 504.6L259.5 501.2L265.5 476.4L269.3 472.6L270.8 470.4L265.5 473L259.5 487.5L254.9 493.1L256.5 493.1L259.5 494.6L258 495.3L256.5 495.7L255.7 495.3L253.4 494.6L254.2 496.4L254.2 497.5L255.7 497.5L258 497.5L258 499L255.7 500.5L254.2 502.7L253.4 505.3L254.2 506.4L254.9 507.9L251.2 511.3L246.6 519.8L242.8 521.7L242.1 522.8L242.1 528L242.1 529.1L240.6 529.9L239.1 529.5L237.5 530.2L236 532.1L233.8 538.8L232.3 539.9L230.7 540.6L225.4 548.1L224.7 549.2L223.9 552.1L223.2 553.3L223.2 555.9L220.9 556.2L219.4 557L217.1 557.3L216.4 558.1L215.6 558.8L214.9 562.2L214.9 553.3L213.3 553.3L211.8 558.1L208.8 558.8L205.8 557L204.3 554L203.5 552.9L202 552.5L200.5 552.9L199.7 553.3L199 557.7L199 559.2L197.5 559.9L189.9 560.7L189.2 561.8L187.6 562.5L186.1 563.7L183.9 564L180.8 565.5L180.1 568.9L180.1 577.4L179.3 581.9L177.8 585.2L174.8 587.4L171 588.2L169.5 588.5L168.7 590L167.2 591.5L166.5 595.6L165 596.7L163.4 597.5L161.2 598.6L158.9 600.4L158.1 601.6L157.4 603L156.6 605.6L156.6 607.9L155.9 609.7L150.6 611.6L146.8 613.4L143.8 616.4L141.5 619.4L140.8 625L144.5 634.2L143.8 639.4L136.2 642.4L117.3 637.6L110.5 637.6L104.5 638.7L88.6 638L84.8 639.4L83.3 639.8L80.3 640.6L78.7 641.7L76.5 639.4L76.5 636.5L76.5 626.1L82.5 575.2L85.6 529.5L87.1 506.8L90.8 445.2L94.6 387.9L94.6 325.5L93.1 264.2L92.4 216.7ZM369.9 310.7L372.9 308.1L375.2 312.2L379 322.6L377.4 324.4L377.4 326.6L377.4 331.9L375.9 331.9L375.9 329.3L375.9 328.5L374.4 328.9L373.7 330.4L372.9 331.9L372.9 318.5L372.1 312.9L369.9 310.7ZM372.1 276.1L374.4 276.1L377.4 276.9L380.5 279.1L382 283.2L380.5 286.5L376.7 295.4L373.7 299.2L371.4 302.9L368.4 304.7L364.6 301.4L362.3 305.1L359.3 307.3L357 309.9L355.5 315.1L354 325.2L354 326.6L352.5 328.9L351.7 331.5L351.7 334.8L348.7 331.9L349.5 331.1L349.5 329.6L350.2 328.5L350.2 324L352.5 316.2L353.2 305.8L354.8 302.1L357.8 299.5L361.6 296.9L366.1 292.5L367.6 292.5L370.6 293.6L373.7 294L375.9 292.1L377.4 287.6L377.4 283.2L375.9 280.2L373.7 282.4L371.4 283.6L369.9 283.2L369.9 282.1L372.1 276.1ZM320 255L323 257.2L324.5 262.8L326.8 274.3L325.3 274.3L324.5 272L322.2 266.8L320 255ZM302.6 245.7L307.1 243.8L318.5 235.6L321.5 234.5L319.2 241.6L314.7 246L307.9 248.3L301.1 248.6L301.1 247.2L302.6 245.7ZM354 170.3L355.5 170.3L354 179.9L349.5 188.5L343.4 195.1L334.3 197.4L334.3 195.9L336.6 195.9L344.9 190.3L347.2 186.6L348.7 181L344.9 181L346.4 174.3L350.2 160.6L350.2 159.5L351.7 158.7L352.5 157.6L352.5 156.1L353.2 153.9L356.3 142.4L357.8 140.2L361.6 141.6L366.1 138.7L368.4 141.6L367.6 146.5L365.3 149.1L363.8 151.7L359.3 163.6L357 167.3L355.5 166.5L354 165.8L354 168L353.2 169.9L351.7 171L350.2 171.7L350.2 173.2L351.7 176.6L353.2 173.6L354 172.1L354 170.3ZM316.2 282.1L320 285L321.5 288L321.5 290.2L320.7 291.4L320.7 292.5L320 294.7L318.5 294.3L317.7 292.5L317.7 288L317.7 286.9L315.4 287.3L313.9 286.5L312.4 285L312.4 283.9L311.7 281.7L313.2 281L316.2 282.1ZM342.7 156.1L344.2 156.1L344.2 158.4L341.9 159.9L339.6 160.2L339.6 159.1L341.1 156.9L341.9 156.1L342.7 156.1ZM348.7 149.8L349.5 150.9L349.5 153.2L347.9 155.4L346.4 156.9L345.7 155.4L344.9 154.7L345.7 153.9L347.9 152.4L347.9 150.9L348.7 150.2ZM361.6 130.1L362.3 131.6L362.3 132.7L361.6 135L359.3 137.2L358.5 136.4L359.3 132.7L360 131.2L360.8 131.6L360 130.5L360.8 130.1L361.6 130.1Z" fill="#0E4A4A" opacity=".22" transform="translate(5 7)"/>
+  <path d="M92.4 216.7L92.4 197.7L93.9 188.8L98.4 182.5L115.8 176.2L120.3 177.7L123.4 181L126.4 184.4L130.2 187L132.4 187.3L135.5 187L137 187.3L140 193.7L143 195.5L151.3 200.7L152.9 200L154.4 198.1L155.1 193.3L155.9 191.8L167.2 183.6L168.7 181.4L171.8 172.9L173.3 170.6L176.3 168L178.6 166.5L181.6 164.7L183.1 161.3L183.9 159.1L184.6 153.9L185.4 151.7L190.7 143.1L191.4 140.5L190.7 137.6L196 132.4L202 129.4L204.3 127.5L206.5 124.2L207.3 121.6L207.3 117.5L208.1 113.8L210.3 110.1L217.1 102.6L219.4 98.6L220.2 96L220.9 90.4L223.2 85.2L223.9 78.5L225.4 76.3L227 74.4L233 69.6L235.3 69.6L237.5 70.7L239.8 71.4L241.3 71.1L245.9 69.6L248.1 68.5L249.6 68.1L250.4 68.5L252.7 70.3L254.2 71.4L256.5 70.3L258 70L270.8 70L272.3 70L272.3 71.1L276.1 74L271.6 79.6L255.7 91.1L254.2 94.5L256.5 97.8L259.5 98.2L269.3 93.4L268.5 96.7L266.3 100L261.7 106.4L260.2 108.2L261 109.3L262.5 109L264 107.8L267.8 103.8L274.6 98.9L278.4 97.1L281.4 96.7L286.7 97.1L292.7 100L295 101.2L299.6 100.4L306.4 96L313.2 93.7L315.4 93.4L316.9 94.1L316.2 97.4L315.4 99.3L310.9 102.6L306.4 104.5L305.6 105.6L305.6 107.8L307.1 108.6L308.6 107.8L310.1 105.2L311.7 103.8L313.9 103L316.2 102.6L316.9 103.8L318.5 129.8L316.9 149.8L316.2 153.5L313.2 158.7L312.4 162.1L304.8 182.1L301.1 184.7L292 201.8L293.5 207.8L291.2 226L285.9 244.2L284.4 247.9L279.1 254.2L276.9 258.3L275.4 263.1L276.9 268.3L279.1 270.9L286.7 275L288.2 278L290.5 279.8L298.8 281.7L301.1 283.2L298 287.6L292.7 287.6L287.5 286.9L285.2 288.8L284.4 292.1L281.4 302.9L276.1 321.4L273.8 343.7L273.8 348.2L273.1 356.7L274.6 361.6L275.4 365.7L275.4 368.3L276.9 373.1L277.6 376.1L279.1 377.2L283.7 378.7L286.7 382L288.2 386.1L289 390.9L289.7 398L291.2 403.2L290.5 405.8L289 406.5L287.5 406.1L285.2 406.9L282.9 409.1L279.9 412.5L277.6 416.5L276.9 419.9L277.6 424L281.4 430.3L282.2 434.4L283.7 434.8L284.4 435.9L283.7 437L282.9 437.4L280.6 437L279.1 437L276.9 439.2L275.4 440.7L275.4 442.6L274.6 443.7L273.8 444.8L273.1 446.3L272.3 448.5L272.3 451.1L273.1 454.4L273.8 456.7L271.6 472.3L270.8 474.9L268.5 476.7L266.3 479.3L264 488.6L263.3 491.2L262.5 494.9L264 500.5L262.5 502.7L261 504.6L260.2 504.6L259.5 501.2L265.5 476.4L269.3 472.6L270.8 470.4L265.5 473L259.5 487.5L254.9 493.1L256.5 493.1L259.5 494.6L258 495.3L256.5 495.7L255.7 495.3L253.4 494.6L254.2 496.4L254.2 497.5L255.7 497.5L258 497.5L258 499L255.7 500.5L254.2 502.7L253.4 505.3L254.2 506.4L254.9 507.9L251.2 511.3L246.6 519.8L242.8 521.7L242.1 522.8L242.1 528L242.1 529.1L240.6 529.9L239.1 529.5L237.5 530.2L236 532.1L233.8 538.8L232.3 539.9L230.7 540.6L225.4 548.1L224.7 549.2L223.9 552.1L223.2 553.3L223.2 555.9L220.9 556.2L219.4 557L217.1 557.3L216.4 558.1L215.6 558.8L214.9 562.2L214.9 553.3L213.3 553.3L211.8 558.1L208.8 558.8L205.8 557L204.3 554L203.5 552.9L202 552.5L200.5 552.9L199.7 553.3L199 557.7L199 559.2L197.5 559.9L189.9 560.7L189.2 561.8L187.6 562.5L186.1 563.7L183.9 564L180.8 565.5L180.1 568.9L180.1 577.4L179.3 581.9L177.8 585.2L174.8 587.4L171 588.2L169.5 588.5L168.7 590L167.2 591.5L166.5 595.6L165 596.7L163.4 597.5L161.2 598.6L158.9 600.4L158.1 601.6L157.4 603L156.6 605.6L156.6 607.9L155.9 609.7L150.6 611.6L146.8 613.4L143.8 616.4L141.5 619.4L140.8 625L144.5 634.2L143.8 639.4L136.2 642.4L117.3 637.6L110.5 637.6L104.5 638.7L88.6 638L84.8 639.4L83.3 639.8L80.3 640.6L78.7 641.7L76.5 639.4L76.5 636.5L76.5 626.1L82.5 575.2L85.6 529.5L87.1 506.8L90.8 445.2L94.6 387.9L94.6 325.5L93.1 264.2L92.4 216.7ZM369.9 310.7L372.9 308.1L375.2 312.2L379 322.6L377.4 324.4L377.4 326.6L377.4 331.9L375.9 331.9L375.9 329.3L375.9 328.5L374.4 328.9L373.7 330.4L372.9 331.9L372.9 318.5L372.1 312.9L369.9 310.7ZM372.1 276.1L374.4 276.1L377.4 276.9L380.5 279.1L382 283.2L380.5 286.5L376.7 295.4L373.7 299.2L371.4 302.9L368.4 304.7L364.6 301.4L362.3 305.1L359.3 307.3L357 309.9L355.5 315.1L354 325.2L354 326.6L352.5 328.9L351.7 331.5L351.7 334.8L348.7 331.9L349.5 331.1L349.5 329.6L350.2 328.5L350.2 324L352.5 316.2L353.2 305.8L354.8 302.1L357.8 299.5L361.6 296.9L366.1 292.5L367.6 292.5L370.6 293.6L373.7 294L375.9 292.1L377.4 287.6L377.4 283.2L375.9 280.2L373.7 282.4L371.4 283.6L369.9 283.2L369.9 282.1L372.1 276.1ZM320 255L323 257.2L324.5 262.8L326.8 274.3L325.3 274.3L324.5 272L322.2 266.8L320 255ZM302.6 245.7L307.1 243.8L318.5 235.6L321.5 234.5L319.2 241.6L314.7 246L307.9 248.3L301.1 248.6L301.1 247.2L302.6 245.7ZM354 170.3L355.5 170.3L354 179.9L349.5 188.5L343.4 195.1L334.3 197.4L334.3 195.9L336.6 195.9L344.9 190.3L347.2 186.6L348.7 181L344.9 181L346.4 174.3L350.2 160.6L350.2 159.5L351.7 158.7L352.5 157.6L352.5 156.1L353.2 153.9L356.3 142.4L357.8 140.2L361.6 141.6L366.1 138.7L368.4 141.6L367.6 146.5L365.3 149.1L363.8 151.7L359.3 163.6L357 167.3L355.5 166.5L354 165.8L354 168L353.2 169.9L351.7 171L350.2 171.7L350.2 173.2L351.7 176.6L353.2 173.6L354 172.1L354 170.3ZM316.2 282.1L320 285L321.5 288L321.5 290.2L320.7 291.4L320.7 292.5L320 294.7L318.5 294.3L317.7 292.5L317.7 288L317.7 286.9L315.4 287.3L313.9 286.5L312.4 285L312.4 283.9L311.7 281.7L313.2 281L316.2 282.1ZM342.7 156.1L344.2 156.1L344.2 158.4L341.9 159.9L339.6 160.2L339.6 159.1L341.1 156.9L341.9 156.1L342.7 156.1ZM348.7 149.8L349.5 150.9L349.5 153.2L347.9 155.4L346.4 156.9L345.7 155.4L344.9 154.7L345.7 153.9L347.9 152.4L347.9 150.9L348.7 150.2ZM361.6 130.1L362.3 131.6L362.3 132.7L361.6 135L359.3 137.2L358.5 136.4L359.3 132.7L360 131.2L360.8 131.6L360 130.5L360.8 130.1L361.6 130.1Z" fill="#8BD3A0" stroke="#0E4A4A" stroke-width="3.5" stroke-linejoin="round"/>
+
+  <g class="map-snow" color="#FFFFFF" opacity=".9"><use href="#flake" x="589" y="139" width="22" height="22"/><use href="#flake" x="631" y="321" width="18" height="18"/><use href="#flake" x="442" y="492" width="16" height="16"/><use href="#flake" x="590" y="490" width="20" height="20"/><use href="#flake" x="513" y="623" width="14" height="14"/><use href="#flake" x="243" y="613" width="14" height="14"/></g>
+
+  <g font-family="Bricolage Grotesque, system-ui, sans-serif" fill="#0E4A4A">
+    <text x="178.5" y="407" text-anchor="middle" font-size="46" font-weight="800" transform="rotate(-6 178.5 407)">Belize</text>
+    <circle cx="296.5" cy="286.3" r="5" fill="#0E4A4A" stroke="#fff" stroke-width="2"/>
+    <text x="286.5" y="291.3" text-anchor="end" font-size="15" font-weight="700">Belize City</text>
+    <text x="16" y="124" font-size="19" font-weight="700" fill="#8A8170">Mexico</text>
+    <text x="0" y="0" font-size="19" font-weight="700" fill="#8A8170" transform="translate(44 380) rotate(-90)">Guatemala</text>
+    <text x="504.1" y="484" text-anchor="middle" font-size="19" font-weight="600" font-style="italic" fill="#3F8A93">Caribbean Sea</text>
+  </g>
+
+  <!-- San Pedro marker and label -->
+  <circle class="map-pulse" cx="344.2" cy="193.3" r="18" fill="#C8232C" opacity=".28"/>
+  <circle cx="344.2" cy="193.3" r="8.5" fill="#C8232C" stroke="#fff" stroke-width="3"/>
+  <path d="M353.2 199.3 L 370.2 211.3" stroke="#0E4A4A" stroke-width="2.5" stroke-linecap="round"/>
+  <g transform="translate(368.2 205.3)">
+    <rect width="142" height="50" rx="12" fill="#fff" stroke="#0E4A4A" stroke-width="2.5"/>
+    <text x="14" y="23" font-family="Bricolage Grotesque, system-ui, sans-serif" font-size="18" font-weight="800" fill="#0E4A4A">San Pedro</text>
+    <text x="14" y="41" font-family="Bricolage Grotesque, system-ui, sans-serif" font-size="13" font-weight="600" fill="#3C6B69">Ambergris Caye</text>
+  </g>
+
+  <!-- Gifts falling toward San Pedro -->
+  <g class="map-gifts" stroke="#fff" stroke-width="3" stroke-linecap="round">
+    <g transform="translate(392 112) rotate(14)"><path d="M30 2 l10 -8 M36 10 l10 -6"/><use href="#gift-mini" width="30" height="30" stroke="none"/></g>
+    <g transform="translate(366 146) rotate(-12)"><path d="M30 2 l10 -8 M36 10 l10 -6"/><use href="#gift-mini" width="26" height="26" stroke="none"/></g>
+  </g>
+
+  <!-- Santa's sleigh and reindeer, flying in from the sea -->
+  <path d="M662 22 C 600 30 520 46 470 70" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round" opacity=".9"/>
+  <g class="map-sleigh">
+    <path d="M378 82 L 334 80 L 262 68" fill="none" stroke="#7A4A22" stroke-width="2"/>
+    <use href="#deer-fly" x="190" y="18" width="104" height="92"/>
+    <use href="#deer-fly" x="266" y="32" width="104" height="92"/>
+    <g transform="translate(352 24)">
+      <ellipse cx="88" cy="36" rx="20" ry="24" fill="#2F6B4F" stroke="#0E4A4A" stroke-width="2.5"/>
+      <rect x="74" y="8" width="16" height="14" rx="2" fill="#F6C445" stroke="#0E4A4A" stroke-width="2"/>
+      <rect x="90" y="4" width="14" height="16" rx="2" fill="#fff" stroke="#0E4A4A" stroke-width="2"/>
+      <use href="#santa" x="22" y="-2" width="58" height="63"/>
+      <path d="M14 46 C 8 30 20 24 28 32 L 36 44 H 104 C 112 44 114 52 112 60 C 108 70 98 72 88 72 H 28 C 18 72 14 62 14 46 Z" fill="#C8232C" stroke="#0E4A4A" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M30 46 H 104" stroke="#F6C445" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M18 84 C 6 84 2 74 10 68 M18 84 H 100 C 108 84 112 80 112 76 M36 72 V 84 M88 72 V 84" fill="none" stroke="#F6C445" stroke-width="5" stroke-linecap="round"/>
+    </g>
+  </g>
+</svg>
+  </div>
+</section>
 
 <section class="uses" aria-labelledby="uses-title">
   <div class="wrap">
@@ -390,10 +512,10 @@ footer strong { color: var(--paper); }
       <h2 id="give-title">Donate</h2>
       <div class="way">
         <h3>With crypto, from anywhere</h3>
-        <p>The button opens a Nicky checkout, where you pay from your own crypto wallet or exchange account.</p>
+        <p>You'll pay on Nicky, from your own crypto wallet or exchange account, in any amount you like.</p>
         <p>Nicky is non-custodial: your payment goes straight to the wallet that collects donations for this outreach, and Nicky never holds the funds.</p>
         <div id="give-action">
-          <a class="btn btn-gift" href="#give" data-donate>Donate with crypto</a>
+          <a class="btn btn-nicky" href="#give" data-donate>Donate with crypto</a>
         </div>
         <p class="pending" id="give-pending" hidden>Crypto donations open shortly. Please check back in a few days.</p>
       </div>
@@ -413,7 +535,7 @@ footer strong { color: var(--paper); }
       <dt>Who runs the outreach</dt>
       <dd>Living Word Church, Princess Drive, San Pedro Town, Ambergris Caye, Belize, led by Pastors Ian and Lourdes Zaldivar. <a href="https://livingwordchurchbelize.org/" target="_blank" rel="noopener">Visit the church's website</a>.</dd>
       <dt>Where donations go</dt>
-      <dd>Crypto donations go to a wallet that a volunteer manages on the church's behalf, for the 2026 Toy + Grocery Outreach. Checks go to Friends of the Living Word Church, a US charity that supports the church.</dd>
+      <dd>Crypto donations go to a wallet that a volunteer manages on the church's behalf, for the Christmas Toy Campaign 2026. Checks go to Friends of the Living Word Church, a US charity that supports the church.</dd>
       <dt>When it happens</dt>
       <dd>Grocery deliveries and the toy giveaway take place in the days before Christmas.</dd>
     </dl>
@@ -427,6 +549,22 @@ footer strong { color: var(--paper); }
     </svg>
   </div>
 </section>
+
+<dialog class="leave" id="leave" aria-labelledby="leave-title">
+  <div class="leave-body">
+    <h2 id="leave-title">You're leaving this page</h2>
+    <p>Your crypto donation is made on Nicky, an external website that opens in a new tab.</p>
+    <ul>
+      <li>Have your crypto wallet or exchange account ready.</li>
+      <li>Give any amount you like.</li>
+      <li>Your donation goes straight to the church's donation wallet. Nicky is non-custodial, so it never holds your funds.</li>
+    </ul>
+    <div class="leave-actions">
+      <a class="btn btn-nicky" id="leave-go" href="#give" target="_blank" rel="noopener">Continue to Nicky</a>
+      <button class="btn btn-quiet" type="button" id="leave-back">Go back</button>
+    </div>
+  </div>
+</dialog>
 
 <footer>
   <div class="wrap">
@@ -453,7 +591,24 @@ footer strong { color: var(--paper); }
     if (!live) {
       document.getElementById("give-action").hidden = true;
       document.getElementById("give-pending").hidden = false;
+      return;
     }
+
+    // A short "you're leaving this page" note before going to Nicky.
+    // Without dialog support the buttons simply open Nicky directly.
+    const dlg = document.getElementById("leave");
+    const go = document.getElementById("leave-go");
+    go.href = NICKY_DONATION_URL;
+    if (!dlg || typeof dlg.showModal !== "function") return;
+    document.querySelectorAll("[data-donate]").forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        dlg.showModal();
+      });
+    });
+    go.addEventListener("click", function () { setTimeout(function () { dlg.close(); }, 0); });
+    document.getElementById("leave-back").addEventListener("click", function () { dlg.close(); });
+    dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
   })();
 
   // Snowfall: a fixed, gentle set of flakes per snowy area. Static when reduced motion is requested.
