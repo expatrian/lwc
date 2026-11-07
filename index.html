@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Toy + Grocery Outreach 2026 | Living Word Church, San Pedro</title>
-<meta name="description" content="Help Living Word Church give toys to San Pedro's children and groceries to their families this Christmas. Donate with crypto through Nicky.">
+<meta name="description" content="Help Living Word Church give toys to San Pedro's children and groceries to their families this Christmas. Donate with crypto, or by tax-deductible check from the US.">
 <meta property="og:title" content="Toy + Grocery Outreach 2026 | Living Word Church, San Pedro">
 <meta property="og:description" content="Toys for San Pedro's children and groceries for their families this Christmas. Donate with crypto.">
 <meta property="og:image" content="https://lwc-sanpedro.vercel.app/media/share.jpg">
@@ -173,6 +173,15 @@ h2 {
 .give-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(32px, 6vw, 80px); align-items: start; }
 .give p { margin: 0 0 18px; max-width: 54ch; }
 .give .btn-gift { min-height: 60px; padding: 0 34px; font-size: 1.1875rem; }
+.give h3 { margin: 0 0 10px; font-size: 1.5rem; font-weight: 750; letter-spacing: -0.01em; }
+.nowrap { white-space: nowrap; }
+.give .flake { color: #EE8F96; }
+.way + .way { margin-top: 40px; padding-top: 32px; border-top: 3px solid rgba(255,255,255,.55); }
+.give address {
+  display: inline-block; margin: 4px 0 0; padding: 16px 22px;
+  background: rgba(0,0,0,.14); border-radius: 10px;
+  font-style: normal; font-weight: 600; line-height: 1.5;
+}
 .pending { margin: 0; padding: 18px 20px; border: 2px dashed rgba(255,255,255,.75); border-radius: 10px; font-weight: 600; }
 .facts { margin: 0; padding: 26px 26px 8px; background: rgba(0,0,0,.14); border-radius: 10px; }
 .facts dt { font-weight: 750; }
@@ -272,7 +281,7 @@ footer strong { color: var(--paper); }
       <div>
         <p class="campaign">Toy + Grocery Outreach 2026</p>
         <h1>Toys and groceries for San Pedro families this Christmas</h1>
-        <p class="lead">Every December, Living Word Church takes groceries to families' homes and hands out toys to the children of San Pedro. This year you can help with a crypto donation.</p>
+        <p class="lead">Every December, Living Word Church takes groceries to families' homes and hands out toys to the children of San Pedro. This year you can help with a crypto donation, or by check from the US.</p>
         <div class="actions">
           <a class="btn btn-gift" href="#give" data-donate>Donate with crypto</a>
           <a class="btn btn-plain" href="#film">Watch the outreach video</a>
@@ -378,19 +387,33 @@ footer strong { color: var(--paper); }
   <div class="snow" aria-hidden="true"></div>
   <div class="wrap give-grid">
     <div>
-      <h2 id="give-title">Donate with crypto</h2>
-      <p>The button opens a Nicky checkout, where you pay from your own crypto wallet or exchange account.</p>
-      <p>Nicky is non-custodial: your payment goes straight to the wallet that collects donations for this outreach, and Nicky never holds the funds.</p>
-      <div id="give-action">
-        <a class="btn btn-gift" href="#give" data-donate>Donate with crypto</a>
+      <h2 id="give-title">Donate</h2>
+      <div class="way">
+        <h3>With crypto, from anywhere</h3>
+        <p>The button opens a Nicky checkout, where you pay from your own crypto wallet or exchange account.</p>
+        <p>Nicky is non-custodial: your payment goes straight to the wallet that collects donations for this outreach, and Nicky never holds the funds.</p>
+        <div id="give-action">
+          <a class="btn btn-gift" href="#give" data-donate>Donate with crypto</a>
+        </div>
+        <p class="pending" id="give-pending" hidden>Crypto donations open shortly. Please check back in a few days.</p>
       </div>
-      <p class="pending" id="give-pending" hidden>Crypto donations open shortly. Please check back in a few days.</p>
+      <div class="way" id="check">
+        <h3>By check, from the US</h3>
+        <p>If you prefer to give in the US, you can write a tax-deductible check for any amount to Friends of the Living Word Church, a US 501(c)(3) charity (<span class="nowrap">EIN 83-2335552</span>). Gifts are deductible to the extent allowed by law. Mail your check to:</p>
+        <address>
+          Friends of the Living Word Church<br>
+          C/O Nagel &amp; Associates, LLC<br>
+          409 Broad Street<br>
+          Suite 103<br>
+          Sewickley, PA 15143
+        </address>
+      </div>
     </div>
     <dl class="facts">
       <dt>Who runs the outreach</dt>
       <dd>Living Word Church, Princess Drive, San Pedro Town, Ambergris Caye, Belize, led by Pastors Ian and Lourdes Zaldivar. <a href="https://livingwordchurchbelize.org/" target="_blank" rel="noopener">Visit the church's website</a>.</dd>
       <dt>Where donations go</dt>
-      <dd>A volunteer manages the donation wallet on the church's behalf, and every donation goes to the 2026 Toy + Grocery Outreach.</dd>
+      <dd>Crypto donations go to a wallet that a volunteer manages on the church's behalf, for the 2026 Toy + Grocery Outreach. Checks go to Friends of the Living Word Church, a US charity that supports the church.</dd>
       <dt>When it happens</dt>
       <dd>Grocery deliveries and the toy giveaway take place in the days before Christmas.</dd>
     </dl>
@@ -440,7 +463,7 @@ footer strong { color: var(--paper); }
     let seed = 7;
     function rand() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
     document.querySelectorAll(".snow").forEach(function (layer) {
-      const count = layer.parentElement.classList.contains("night") ? 34 : 18;
+      const count = layer.parentElement.classList.contains("night") ? 34 : 14;
       for (let i = 0; i < count; i++) {
         const svg = document.createElementNS(ns, "svg");
         const use = document.createElementNS(ns, "use");
