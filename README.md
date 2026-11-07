@@ -2,6 +2,8 @@
 
 Static donation page for Living Word Church's 2026 Christmas Toy + Grocery Outreach in San Pedro, Ambergris Caye, Belize. Donations are made in crypto through Nicky.
 
+Live at https://lwc-sanpedro.vercel.app (Vercel project `lwc-sanpedro`, deployed from `main`). If a custom domain is added later, update `og:image`, `og:url` and the canonical link in `index.html`.
+
 ## Turning donations on
 
 Open `index.html`, find this line near the bottom and paste the Nicky donation link between the quotes:
