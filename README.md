@@ -17,7 +17,7 @@ While it is empty, the page shows "Crypto donations open shortly" and the donate
 ## Structure
 
 - `index.html`: the whole page (markup, styles, the one script above)
-- `media/`: photos (WebP, 480 and 739 px wide), video stills, the 2024 outreach video (H.264, 480p) and the share image
+- `media/`: photos (WebP, 480 and 739 px wide), video stills, the outreach video (H.264, 480p, title cards trimmed) and the share image
 - `vercel.json`: cache headers for media and basic security headers
 - `favicon.svg`: gift icon
 
