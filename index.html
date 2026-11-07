@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toy + Grocery Outreach 2026 | Living Word Church, San Pedro</title>
+<meta name="description" content="Help Living Word Church give toys to San Pedro's children and groceries to their families this Christmas. Donate with crypto through Nicky.">
+<meta property="og:title" content="Toy + Grocery Outreach 2026 | Living Word Church, San Pedro">
+<meta property="og:description" content="Toys for San Pedro's children and groceries for their families this Christmas. Donate with crypto.">
+<meta property="og:image" content="/media/share.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0E4A4A">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --court: #DDEFE7;      /* painted court mint, page base */
+  --paper: #F8FCFA;      /* light sections */
+  --bleacher: #0E4A4A;   /* deep teal: text and dark sections */
+  --bleacher-soft: #3C6B69;
+  --ribbon: #C8232C;     /* Christmas red: the give section */
+  --tinsel: #F6C445;     /* toy-box yellow: primary buttons */
+  --line: #FFFFFF;
+  --gutter: clamp(16px, 4vw, 40px);
+  --measure: 62ch;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--court);
+  color: var(--bleacher);
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-optical-sizing: auto;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img, video { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--bleacher); outline-offset: 3px; border-radius: 4px; }
+.wrap { width: min(1200px, 100%); margin-inline: auto; padding-inline: var(--gutter); }
+
+/* Header */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 20px; }
+.brand { text-decoration: none; line-height: 1.15; }
+.brand strong { display: block; font-size: 1.125rem; font-weight: 750; letter-spacing: -0.01em; }
+.brand span { font-size: 0.875rem; color: var(--bleacher-soft); }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 52px; padding: 0 26px; border-radius: 999px;
+  font: inherit; font-weight: 700; font-size: 1.0625rem; text-decoration: none;
+  border: 2px solid var(--bleacher); cursor: pointer;
+  transition: transform .15s ease, background-color .15s ease;
+}
+.btn:hover { text-decoration: none; transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn-gift { background: var(--tinsel); color: var(--bleacher); }
+.btn-gift:hover { background: #FFD45E; }
+.btn-plain { background: transparent; color: var(--bleacher); }
+.btn-plain:hover { background: var(--paper); }
+.btn-small { min-height: 42px; padding: 0 18px; font-size: 0.9375rem; }
+@media (prefers-reduced-motion: reduce) { .btn, .btn:hover { transition: none; transform: none; } }
+
+/* Hero */
+.hero { padding-block: clamp(16px, 3.5vw, 44px) clamp(24px, 3vw, 36px); }
+.campaign {
+  display: inline-block; margin: 0 0 22px; padding: 6px 14px 7px;
+  background: var(--ribbon); color: var(--line);
+  font-weight: 700; font-size: 0.9375rem; border-radius: 6px;
+}
+.hero h1 {
+  margin: 0; max-width: 17ch; text-wrap: balance;
+  font-size: clamp(2.4rem, 5.6vw, 4.75rem);
+  font-weight: 800; line-height: 0.98; letter-spacing: -0.025em;
+  font-variation-settings: "opsz" 96;
+}
+.lead { margin: 24px 0 0; max-width: 52ch; font-size: clamp(1.125rem, 1.6vw, 1.3125rem); line-height: 1.55; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+
+/* Photo line: the children with their gifts */
+.line {
+  --edge: max(var(--gutter), calc((100vw - 1200px) / 2 + var(--gutter)));
+  display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 8px var(--edge) 18px;
+  scroll-padding-inline: var(--edge);
+  scrollbar-width: thin; scrollbar-color: var(--bleacher-soft) transparent;
+}
+.line figure { margin: 0; flex: 0 0 clamp(210px, 25vw, 330px); scroll-snap-align: start; }
+.line img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; border-radius: 10px; background: #c9e2d7; }
+.line-caption { margin: 6px 0 0; font-size: 0.9375rem; color: var(--bleacher-soft); }
+
+/* Sections */
+section { padding-block: clamp(64px, 9vw, 120px); }
+h2 {
+  margin: 0 0 20px; max-width: 24ch; text-wrap: balance;
+  font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 800; line-height: 1.02; letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 72;
+}
+.intro { margin: 0 0 48px; max-width: var(--measure); }
+
+/* Where it goes */
+.uses { background: var(--paper); }
+.uses-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(32px, 5vw, 64px); }
+.use img { width: 100%; aspect-ratio: 848 / 480; object-fit: cover; border-radius: 10px; }
+.figure { margin: 24px 0 4px; font-size: clamp(3rem, 6vw, 4.5rem); font-weight: 800; line-height: 1; letter-spacing: -0.03em; font-variation-settings: "opsz" 96; }
+.figure-note { margin: 0 0 16px; font-size: 0.9375rem; color: var(--bleacher-soft); }
+.use h3 { margin: 0 0 8px; font-size: 1.5rem; font-weight: 750; letter-spacing: -0.01em; }
+.use p { margin: 0; max-width: 46ch; }
+
+/* Timeline */
+.years { list-style: none; margin: 0; padding: 0; max-width: 860px; }
+.years li {
+  display: grid; grid-template-columns: 6.5rem 1fr; gap: 8px 28px;
+  padding-block: 22px; border-top: 3px solid var(--line);
+}
+.years li:last-child { border-bottom: 3px solid var(--line); }
+.year { font-size: 2rem; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; font-variation-settings: "opsz" 72; }
+.years p { margin: 0; max-width: 56ch; }
+.source { display: inline-block; margin-top: 6px; font-size: 0.9375rem; color: var(--bleacher-soft); }
+.years li.now .year { color: var(--ribbon); }
+
+/* Video */
+.film { background: var(--bleacher); color: var(--paper); }
+.film h2 { color: var(--paper); }
+.film .intro { color: #CFE3DD; }
+.film video { width: 100%; max-width: 960px; height: auto; aspect-ratio: 848 / 480; border-radius: 10px; background: #072f2f; }
+.film :focus-visible { outline-color: var(--tinsel); }
+
+/* Give */
+.give { background: var(--ribbon); color: var(--line); }
+.give h2 { color: var(--line); }
+.give-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(32px, 6vw, 80px); align-items: start; }
+.give p { margin: 0 0 18px; max-width: 54ch; }
+.give .btn-gift { border-color: var(--tinsel); min-height: 60px; padding: 0 34px; font-size: 1.1875rem; }
+.give :focus-visible { outline-color: var(--tinsel); }
+.pending { margin: 0; padding: 18px 20px; border: 2px dashed rgba(255,255,255,.75); border-radius: 10px; font-weight: 600; }
+.facts { margin: 0; padding: 26px 26px 8px; background: rgba(0,0,0,.12); border-radius: 10px; }
+.facts dt { font-weight: 750; }
+.facts dd { margin: 2px 0 18px; color: #FBE3E3; }
+
+/* Footer */
+footer { background: var(--bleacher); color: #CFE3DD; padding-block: 44px; font-size: 0.9375rem; }
+footer p { margin: 0 0 6px; }
+footer strong { color: var(--paper); }
+
+@media (max-width: 760px) {
+  .uses-grid, .give-grid { grid-template-columns: 1fr; }
+  .years li { grid-template-columns: 1fr; gap: 4px; }
+  .top .btn-small { display: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="wrap top">
+  <a class="brand" href="#top">
+    <strong>Living Word Church</strong>
+    <span>San Pedro, Ambergris Caye, Belize</span>
+  </a>
+  <a class="btn btn-gift btn-small" href="#give">Donate</a>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <p class="campaign">Toy + Grocery Outreach 2026</p>
+    <h1>Toys and groceries for San Pedro families this Christmas</h1>
+    <p class="lead">Every December, Living Word Church takes groceries to families' homes and hands out toys to the children of San Pedro. This year you can help with a crypto donation.</p>
+    <div class="actions">
+      <a class="btn btn-gift" href="#give" data-donate>Donate with crypto</a>
+      <a class="btn btn-plain" href="#film">Watch the 2024 outreach</a>
+    </div>
+  </div>
+
+  <div class="line" tabindex="0" role="region" aria-label="Photos from the 2025 toy giveaway, scrolls sideways">
+    <figure><img src="/media/crane-truck-739.webp" srcset="/media/crane-truck-480.webp 480w, /media/crane-truck-739.webp 739w" sizes="(max-width: 840px) 210px, 330px" width="739" height="1108" alt="A smiling toddler holds a boxed toy crane truck."></figure>
+    <figure><img src="/media/keyboard-739.webp" srcset="/media/keyboard-480.webp 480w, /media/keyboard-739.webp 739w" sizes="(max-width: 840px) 210px, 330px" width="739" height="1108" alt="A girl holds a toy electronic keyboard at the evening giveaway."></figure>
+    <figure><img src="/media/police-car-739.webp" srcset="/media/police-car-480.webp 480w, /media/police-car-739.webp 739w" sizes="(max-width: 840px) 210px, 330px" width="739" height="1108" alt="A boy makes peace signs behind a boxed toy police car." loading="lazy"></figure>
+    <figure><img src="/media/three-friends-739.webp" srcset="/media/three-friends-480.webp 480w, /media/three-friends-739.webp 739w" sizes="(max-width: 840px) 210px, 330px" width="739" height="1108" alt="Three children hold up their new toys in front of the bleachers." loading="lazy"></figure>
+    <figure><img src="/media/mermaid-doll-739.webp" srcset="/media/mermaid-doll-480.webp 480w, /media/mermaid-doll-739.webp 739w" sizes="(max-width: 840px) 210px, 330px" width="739" height="1108" alt="A girl holds a boxed mermaid doll." loading="lazy"></figure>
+    <figure><img src="/media/truck-hauler-739.webp" srcset="/media/truck-hauler-480.webp 480w, /media/truck-hauler-739.webp 739w" sizes="(max-width: 840px) 210px, 330px" width="739" height="1108" alt="A child grins over a toy emergency truck hauler." loading="lazy"></figure>
+    <figure><img src="/media/monster-truck-739.webp" srcset="/media/monster-truck-480.webp 480w, /media/monster-truck-739.webp 739w" sizes="(max-width: 840px) 210px, 330px" width="739" height="1108" alt="A boy holds a large toy monster truck." loading="lazy"></figure>
+    <figure><img src="/media/king-cruiser-739.webp" srcset="/media/king-cruiser-480.webp 480w, /media/king-cruiser-739.webp 739w" sizes="(max-width: 840px) 210px, 330px" width="739" height="1108" alt="A small boy holds a boxed toy car set and a cup of juice." loading="lazy"></figure>
+    <figure><img src="/media/kitchen-set-739.webp" srcset="/media/kitchen-set-480.webp 480w, /media/kitchen-set-739.webp 739w" sizes="(max-width: 840px) 210px, 330px" width="739" height="1108" alt="A toddler stands beside a new toy kitchen set." loading="lazy"></figure>
+    <figure><img src="/media/city-rescue-739.webp" srcset="/media/city-rescue-480.webp 480w, /media/city-rescue-739.webp 739w" sizes="(max-width: 840px) 210px, 330px" width="739" height="1108" alt="A toddler carries a fire-rescue toy set almost as big as he is." loading="lazy"></figure>
+  </div>
+  <div class="wrap"><p class="line-caption">Children at the church's 2025 Christmas toy giveaway.</p></div>
+
+  <section class="uses" aria-labelledby="uses-title">
+    <div class="wrap">
+      <h2 id="uses-title">Where your donation goes</h2>
+      <p class="intro">The outreach has two parts, and your donation pays for both.</p>
+      <div class="uses-grid">
+        <div class="use">
+          <img src="/media/toys-2024.webp" width="848" height="480" alt="Tables stacked with boxed toys ready for the giveaway." loading="lazy">
+          <p class="figure">1,200</p>
+          <p class="figure-note">toys at the 2022 giveaway</p>
+          <h3>Toys for the children</h3>
+          <p>Children come with their families for an evening of performances, a cupcake and a drink, and each one leaves with a new toy. In 2022 the church handed out another 500 small toys while caroling the night before.</p>
+        </div>
+        <div class="use">
+          <img src="/media/groceries-2024.webp" width="848" height="480" alt="A volunteer hands a bag of groceries to a woman on the steps of her house." loading="lazy">
+          <p class="figure">150</p>
+          <p class="figure-note">food baskets in 2022</p>
+          <h3>Groceries for their families</h3>
+          <p>Volunteers take food baskets to families' homes in the days before Christmas, so the holiday table is covered as well as the gifts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="years-title">
+    <div class="wrap">
+      <h2 id="years-title">A Christmas tradition since 2010</h2>
+      <p class="intro">Led by Pastor Ian Zaldivar, the outreach has grown with the island, and local businesses have joined in.</p>
+      <ol class="years">
+        <li>
+          <span class="year">2010</span>
+          <div><p>Living Word Church starts its Christmas toy drive, with the aim of bringing joy to all of San Pedro's children.</p></div>
+        </li>
+        <li>
+          <span class="year">2018</span>
+          <div>
+            <p>1,100 toys handed out at the Hon. Louise Sylvestre Sporting Field, each with a cupcake and a drink, plus food baskets for families.</p>
+            <a class="source" href="https://ambergristoday.com/?p=21730" target="_blank" rel="noopener">Reported by Ambergris Today</a>
+          </div>
+        </li>
+        <li>
+          <span class="year">2022</span>
+          <div>
+            <p>1,200 toys at the giveaway, plus 500 small toys and 150 food baskets on the caroling night before. Caye Bank, its clients and partners back the outreach with a major donation.</p>
+            <a class="source" href="https://www.sanpedrosun.com/?p=94363" target="_blank" rel="noopener">Reported by The San Pedro Sun</a>
+          </div>
+        </li>
+        <li>
+          <span class="year">2024</span>
+          <div>
+            <p>The Toy + Grocery Outreach: groceries delivered door to door, then a toy giveaway with children's performances at the San Pedro High School auditorium on December 23.</p>
+            <a class="source" href="https://www.sanpedrosun.com/?p=108767" target="_blank" rel="noopener">Reported by The San Pedro Sun</a>
+          </div>
+        </li>
+        <li>
+          <span class="year">2025</span>
+          <div><p>Another year of toys for the island's children, pictured at the top of this page.</p></div>
+        </li>
+        <li class="now">
+          <span class="year">2026</span>
+          <div><p>This year's outreach. Your donation buys this December's toys and groceries.</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="film" id="film" aria-labelledby="film-title">
+    <div class="wrap">
+      <h2 id="film-title">The 2024 outreach in three minutes</h2>
+      <p class="intro">The church's own video: grocery deliveries around San Pedro, then the toy giveaway.</p>
+      <video controls preload="none" playsinline poster="/media/outreach-2024-poster.webp" width="848" height="480">
+        <source src="/media/outreach-2024.mp4" type="video/mp4">
+        Your browser can't play this video. <a href="/media/outreach-2024.mp4">Download it instead</a>.
+      </video>
+    </div>
+  </section>
+
+  <section class="give" id="give" aria-labelledby="give-title">
+    <div class="wrap give-grid">
+      <div>
+        <h2 id="give-title">Donate with crypto</h2>
+        <p>The button opens a Nicky checkout, where you pay from your own crypto wallet or exchange account.</p>
+        <p>Nicky is non-custodial: your payment goes straight to the wallet that collects donations for this outreach, and Nicky never holds the funds.</p>
+        <div id="give-action">
+          <a class="btn btn-gift" href="#give" data-donate>Donate with crypto</a>
+        </div>
+        <p class="pending" id="give-pending" hidden>Crypto donations open shortly. Please check back in a few days.</p>
+      </div>
+      <dl class="facts">
+        <dt>Who runs the outreach</dt>
+        <dd>Living Word Church, San Pedro Town, Ambergris Caye, Belize, led by Pastor Ian Zaldivar.</dd>
+        <dt>Where donations go</dt>
+        <dd>A volunteer manages the donation wallet on the church's behalf, and every donation goes to the 2026 Toy + Grocery Outreach.</dd>
+        <dt>When it happens</dt>
+        <dd>Grocery deliveries and the toy giveaway take place in the days before Christmas.</dd>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Living Word Church</strong>, San Pedro Town, Ambergris Caye, Belize</p>
+    <p>Crypto donations through <a href="https://nicky.me" target="_blank" rel="noopener">Nicky</a>.</p>
+  </div>
+</footer>
+
+<script>
+  // Paste the Nicky donation link here. While it is empty, the page shows "Crypto donations open shortly".
+  const NICKY_DONATION_URL = "";
+
+  (function () {
+    const live = /^https:\/\//.test(NICKY_DONATION_URL);
+    document.querySelectorAll("[data-donate]").forEach(function (a) {
+      if (live) {
+        a.href = NICKY_DONATION_URL;
+        a.target = "_blank";
+        a.rel = "noopener";
+      } else {
+        a.href = "#give";
+      }
+    });
+    if (!live) {
+      document.getElementById("give-action").hidden = true;
+      document.getElementById("give-pending").hidden = false;
+    }
+  })();
+</script>
+</body>
+</html>
