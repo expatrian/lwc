@@ -31,6 +31,7 @@
   --tinsel: #F6C445;     /* toy-box yellow */
   --lwc-orange: #F2931E; /* Living Word Church logo orange */
   --lwc-maroon: #8B2B2B; /* Living Word Church logo figures */
+  --caye-green: #0F6735; /* Caye International Bank brand green */
   --line: #FFFFFF;
   --gutter: clamp(16px, 4vw, 40px);
   --measure: 62ch;
@@ -208,15 +209,16 @@ h2 {
 .give-foot { display: flex; justify-content: flex-end; margin-top: 24px; }
 .reindeer-hat { width: clamp(110px, 12vw, 150px); margin-bottom: calc(-1 * clamp(64px, 9vw, 120px) - 46px); }
 
-/* Partner band */
-.partner { background: #fff; padding-block: clamp(48px, 6vw, 80px); }
+/* Partner band, in Caye International Bank's green */
+.partner { background: var(--caye-green); color: #fff; padding-block: clamp(48px, 6vw, 80px); }
 .partner-grid { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
-.partner-logos { display: flex; align-items: center; gap: 18px; }
-.partner-lwc { width: clamp(72px, 8vw, 96px); height: auto; }
-.partner-x { font-size: 2rem; color: var(--bleacher-soft); line-height: 1; }
-.partner-bank { font-size: clamp(1.5rem, 2.6vw, 2rem); font-weight: 800; letter-spacing: -0.01em; color: var(--bleacher); padding: 14px 22px; border: 2px solid #CFE3DD; border-radius: 14px; white-space: nowrap; }
-.partner h2 { font-size: clamp(1.625rem, 3vw, 2.25rem); margin-bottom: 10px; }
-.partner p { margin: 0; max-width: 56ch; }
+.partner-logos { display: flex; align-items: center; gap: clamp(12px, 2vw, 20px); }
+.partner-lwc { width: clamp(64px, 8vw, 96px); height: auto; flex: none; }
+.partner-x { font-size: 2rem; line-height: 1; color: #CFE8D8; }
+.partner-card { display: block; background: #fff; border-radius: 14px; padding: clamp(12px, 1.6vw, 18px) clamp(14px, 2vw, 22px); }
+.partner-card img { display: block; width: clamp(170px, 20vw, 250px); height: auto; }
+.partner h2 { color: #fff; font-size: clamp(1.625rem, 3vw, 2.25rem); margin-bottom: 10px; }
+.partner p { margin: 0; max-width: 56ch; color: #DCEFE3; }
 
 /* Map: Santa over Belize */
 .where-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(32px, 5vw, 64px); align-items: center; }
@@ -522,7 +524,7 @@ footer strong { color: var(--paper); }
       <li>
         <span class="year">2022</span>
         <div>
-          <p>1,200 toys at the giveaway, plus 500 small toys and 150 food baskets on the caroling night before. Caye Bank, its clients and partners back the outreach with a major donation.</p>
+          <p>1,200 toys at the giveaway, plus 500 small toys and 150 food baskets on the caroling night before. Caye International Bank, its clients and partners back the outreach with a major donation.</p>
           <a class="source" href="https://www.sanpedrosun.com/?p=94363" target="_blank" rel="noopener">Reported by The San Pedro Sun</a>
         </div>
       </li>
@@ -543,15 +545,14 @@ footer strong { color: var(--paper); }
 
 <section class="partner" aria-labelledby="partner-title">
   <div class="wrap partner-grid">
-    <div class="partner-logos" aria-hidden="true">
-      <svg class="partner-lwc" viewBox="2 0 196 206"><use href="#lwc-logo"/></svg>
-      <span class="partner-x">&times;</span>
-      <!-- Placeholder: replace with Caye Bank's official logo file (e.g. /media/caye-bank-logo.svg) once approved -->
-      <span class="partner-bank">Caye Bank</span>
+    <div class="partner-logos">
+      <svg class="partner-lwc" viewBox="2 0 196 206" role="img" aria-label="Living Word Church"><use href="#lwc-logo"/></svg>
+      <span class="partner-x" aria-hidden="true">&times;</span>
+      <span class="partner-card"><img src="/media/caye-bank-logo.png" width="383" height="96" alt="Caye International Bank"></span>
     </div>
     <div>
-      <h2 id="partner-title">In partnership with Caye Bank</h2>
-      <p>Caye Bank and its clients have been major supporters of Living Word Church's Christmas outreach in San Pedro, including in 2022 and 2024.</p>
+      <h2 id="partner-title">In partnership with Caye International Bank</h2>
+      <p>Caye International Bank and its clients have been major supporters of Living Word Church's Christmas outreach in San Pedro, including in 2022 and 2024.</p>
     </div>
   </div>
 </section>
@@ -656,7 +657,7 @@ Sewickley, PA 15143</address>
     <div>
     <p class="wordmark footer-wordmark">Living Word Church</p>
     <p>Princess Drive, San Pedro Town, Ambergris Caye, Belize. <a href="https://livingwordchurchbelize.org/" target="_blank" rel="noopener">livingwordchurchbelize.org</a> and <a href="https://www.facebook.com/livingwordchurchbelize/" target="_blank" rel="noopener">Facebook</a></p>
-    <p>In partnership with Caye Bank. Crypto donations through <a href="https://nicky.me" target="_blank" rel="noopener">Nicky</a>.</p>
+    <p>In partnership with Caye International Bank. Crypto donations through <a href="https://nicky.me" target="_blank" rel="noopener">Nicky</a>.</p>
     </div>
   </div>
 </footer>

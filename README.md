@@ -19,6 +19,7 @@ While it is empty, the page shows "Crypto donations open shortly" and the donate
 - `index.html`: the whole page (markup, styles, the one script above)
 - `media/`: photos (WebP, 480 and 739 px wide), video stills, the outreach video (H.264, 480p, title cards trimmed) and the share image
 - `vercel.json`: cache headers for media and basic security headers
+- `media/caye-bank-logo.png`: Caye International Bank logo (supplied file); band colour `--caye-green` #0F6735 sampled from it
 - `favicon.svg` and `media/lwc-logo.svg`: Living Word Church logo (vector redraw from the church's video artwork; replace with the official file when available)
 
 No build step. Vercel serves the folder as-is; every push to `main` redeploys.
