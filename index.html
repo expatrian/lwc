@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Christmas Toy Campaign 2026 | Living Word Church, San Pedro</title>
-<meta name="description" content="Help Living Word Church give toys to San Pedro's children and groceries to their families this Christmas. Donate with crypto, or by tax-deductible check from the US.">
+<meta name="description" content="Help Living Word Church give toys to San Pedro's children and groceries to their families this Christmas. Donate with crypto through Nicky, or by check.">
 <meta property="og:title" content="Christmas Toy Campaign 2026 | Living Word Church, San Pedro">
 <meta property="og:description" content="Toys for San Pedro's children and groceries for their families this Christmas. Donate with crypto, or by check from the US.">
 <meta property="og:image" content="https://lwc-sanpedro.vercel.app/media/share.jpg">
@@ -49,6 +49,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 img, video { display: block; max-width: 100%; height: auto; }
+[hidden] { display: none !important; }
 a { color: inherit; text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
 a:hover { text-decoration-thickness: 2px; }
 :focus-visible { outline: 3px solid var(--bleacher); outline-offset: 3px; border-radius: 4px; }
@@ -176,18 +177,26 @@ h2 {
 .give { background: var(--ribbon); color: var(--line); overflow: hidden; }
 .give > .wrap { z-index: 1; }
 .give h2 { color: var(--line); }
-.give-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(32px, 6vw, 80px); align-items: start; }
+.give-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
 .give p { margin: 0 0 18px; max-width: 54ch; }
 .give .btn-gift { min-height: 60px; padding: 0 34px; font-size: 1.1875rem; }
-.give h3 { margin: 0 0 10px; font-size: 1.5rem; font-weight: 750; letter-spacing: -0.01em; }
-.nowrap { white-space: nowrap; }
 .give .flake { color: #EE8F96; }
-.way + .way { margin-top: 40px; padding-top: 32px; border-top: 3px solid rgba(255,255,255,.55); }
-.give address {
-  display: inline-block; margin: 4px 0 0; padding: 16px 22px;
-  background: rgba(0,0,0,.14); border-radius: 10px;
-  font-style: normal; font-weight: 600; line-height: 1.5;
+.give-intro { font-size: 1.1875rem; }
+/* Donation options: one tile per way to give; add tiles as options grow */
+.options { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; margin-top: 8px; }
+.option {
+  display: flex; align-items: center; gap: 14px; min-height: 84px; padding: 18px 22px;
+  background: #000; color: #fff; border: 2px solid #000; border-radius: 16px;
+  font: inherit; text-align: left; text-decoration: none; cursor: pointer;
+  transition: transform .15s ease, background-color .15s ease;
 }
+.option:hover { background: #1c1c1c; border-color: #1c1c1c; transform: translateY(-2px); text-decoration: none; }
+.option:active { transform: translateY(0); }
+.option-icon { width: 40px; height: 40px; flex: none; display: block; }
+.option-title { font-size: 1.1875rem; font-weight: 750; line-height: 1.25; }
+.option-note { font-weight: 500; opacity: .75; }
+@media (prefers-reduced-motion: reduce) { .option, .option:hover { transition: none; transform: none; } }
+.check-address { margin: 4px 0 22px; padding: 16px 20px; background: var(--court); border-radius: 12px; font-style: normal; font-weight: 650; line-height: 1.55; }
 .pending { margin: 0; padding: 18px 20px; border: 2px dashed rgba(255,255,255,.75); border-radius: 10px; font-weight: 600; }
 .facts { padding: 24px 26px 8px; background: rgba(0,0,0,.14); border-radius: 10px; }
 .facts dl { margin: 0; }
@@ -198,6 +207,16 @@ h2 {
 .facts dd { margin: 2px 0 18px; color: #FBE3E3; }
 .give-foot { display: flex; justify-content: flex-end; margin-top: 24px; }
 .reindeer-hat { width: clamp(110px, 12vw, 150px); margin-bottom: calc(-1 * clamp(64px, 9vw, 120px) - 46px); }
+
+/* Partner band */
+.partner { background: #fff; padding-block: clamp(48px, 6vw, 80px); }
+.partner-grid { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
+.partner-logos { display: flex; align-items: center; gap: 18px; }
+.partner-lwc { width: clamp(72px, 8vw, 96px); height: auto; }
+.partner-x { font-size: 2rem; color: var(--bleacher-soft); line-height: 1; }
+.partner-bank { font-size: clamp(1.5rem, 2.6vw, 2rem); font-weight: 800; letter-spacing: -0.01em; color: var(--bleacher); padding: 14px 22px; border: 2px solid #CFE3DD; border-radius: 14px; white-space: nowrap; }
+.partner h2 { font-size: clamp(1.625rem, 3vw, 2.25rem); margin-bottom: 10px; }
+.partner p { margin: 0; max-width: 56ch; }
 
 /* Map: Santa over Belize */
 .where-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(32px, 5vw, 64px); align-items: center; }
@@ -237,7 +256,7 @@ footer strong { color: var(--paper); }
   .years li { grid-template-columns: 1fr; gap: 4px; }
   .line-foot { min-height: 96px; }
   .photos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-  .where-grid { grid-template-columns: 1fr; }
+  .where-grid, .partner-grid { grid-template-columns: 1fr; }
   .map { border-width: 3px; }
 }
 </style>
@@ -522,6 +541,21 @@ footer strong { color: var(--paper); }
   </div>
 </section>
 
+<section class="partner" aria-labelledby="partner-title">
+  <div class="wrap partner-grid">
+    <div class="partner-logos" aria-hidden="true">
+      <svg class="partner-lwc" viewBox="2 0 196 206"><use href="#lwc-logo"/></svg>
+      <span class="partner-x">&times;</span>
+      <!-- Placeholder: replace with Caye Bank's official logo file (e.g. /media/caye-bank-logo.svg) once approved -->
+      <span class="partner-bank">Caye Bank</span>
+    </div>
+    <div>
+      <h2 id="partner-title">In partnership with Caye Bank</h2>
+      <p>Caye Bank and its clients have been major supporters of Living Word Church's Christmas outreach in San Pedro, including in 2022 and 2024.</p>
+    </div>
+  </div>
+</section>
+
 <section class="film" id="film" aria-labelledby="film-title">
   <div class="wrap">
     <h2 id="film-title">The outreach in three minutes</h2>
@@ -538,26 +572,25 @@ footer strong { color: var(--paper); }
   <div class="wrap give-grid">
     <div>
       <h2 id="give-title">Donate</h2>
-      <div class="way">
-        <h3>With crypto, from anywhere</h3>
-        <p>You'll pay on Nicky, from your own crypto wallet or exchange account, in any amount you like.</p>
-        <p>Nicky is non-custodial: your payment goes straight to the wallet that collects donations for this outreach, and Nicky never holds the funds.</p>
-        <div id="give-action">
-          <a class="btn btn-nicky" href="#give" data-donate><img class="nicky-n" src="/media/nicky-n.png" width="24" height="24" alt="">Donate crypto with Nicky</a>
-        </div>
-        <p class="pending" id="give-pending" hidden>Crypto donations open shortly. Please check back in a few days.</p>
+      <p class="give-intro">Choose how you'd like to give.</p>
+      <div class="options">
+        <a class="option" href="#give" data-donate>
+          <img class="option-icon" src="/media/nicky-n.png" width="40" height="40" alt="">
+          <span class="option-title">Donate with Nicky <span class="option-note">(crypto)</span></span>
+        </a>
+        <button class="option" type="button" data-check>
+          <svg class="option-icon" viewBox="0 0 40 40" aria-hidden="true">
+            <circle cx="20" cy="20" r="20" fill="#090E1B"/>
+            <rect x="10" y="13" width="20" height="14" rx="2.5" fill="none" stroke="#fff" stroke-width="2.4"/>
+            <path d="M11 15 L20 21.5 L29 15" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+          </svg>
+          <span class="option-title">Donate by check</span>
+        </button>
       </div>
-      <div class="way" id="check">
-        <h3>By check, from the US</h3>
-        <p>If you prefer to give in the US, you can write a tax-deductible check for any amount to Friends of the Living Word Church, a US 501(c)(3) charity (<span class="nowrap">EIN 83-2335552</span>). Gifts are deductible to the extent allowed by law. Mail your check to:</p>
-        <address>
-          Friends of the Living Word Church<br>
-          C/O Nagel &amp; Associates, LLC<br>
-          409 Broad Street<br>
-          Suite 103<br>
-          Sewickley, PA 15143
-        </address>
-      </div>
+      <p class="pending" id="give-pending" hidden>Crypto donations open shortly. Please check back in a few days.</p>
+      <noscript>
+        <p class="give-intro">To donate by check, mail it to: Friends of the Living Word Church, C/O Nagel &amp; Associates, LLC, 409 Broad Street, Suite 103, Sewickley, PA 15143.</p>
+      </noscript>
     </div>
     <div class="facts">
       <div class="facts-brand">
@@ -568,7 +601,7 @@ footer strong { color: var(--paper); }
       <dt>Who runs the outreach</dt>
       <dd>Based on Princess Drive, San Pedro Town, Ambergris Caye, Belize, and led by Pastors Ian and Lourdes Zaldivar. Visit the church's <a href="https://livingwordchurchbelize.org/" target="_blank" rel="noopener">website</a> or <a href="https://www.facebook.com/livingwordchurchbelize/" target="_blank" rel="noopener">Facebook page</a>.</dd>
       <dt>Where donations go</dt>
-      <dd>Crypto donations go to a wallet that a volunteer manages on the church's behalf, for the Christmas Toy Campaign 2026. Checks go to Friends of the Living Word Church, a US charity that supports the church.</dd>
+      <dd>Crypto donations go to a wallet that a volunteer manages on the church's behalf, for the Christmas Toy Campaign 2026. Checks go to Friends of the Living Word Church.</dd>
       <dt>When it happens</dt>
       <dd>Grocery deliveries and the toy giveaway take place in the days before Christmas.</dd>
       </dl>
@@ -583,6 +616,22 @@ footer strong { color: var(--paper); }
     </svg>
   </div>
 </section>
+
+<dialog class="leave" id="check-dialog" aria-labelledby="check-title">
+  <div class="leave-body">
+    <h2 id="check-title">Donate by check</h2>
+    <p>Write a check for any amount and mail it to:</p>
+    <address class="check-address" id="check-address">Friends of the Living Word Church<br>
+C/O Nagel &amp; Associates, LLC<br>
+409 Broad Street<br>
+Suite 103<br>
+Sewickley, PA 15143</address>
+    <div class="leave-actions">
+      <button class="btn btn-dark" type="button" id="check-copy">Copy address</button>
+      <button class="btn btn-quiet" type="button" id="check-close">Close</button>
+    </div>
+  </div>
+</dialog>
 
 <dialog class="leave" id="leave" aria-labelledby="leave-title">
   <div class="leave-body">
@@ -607,7 +656,7 @@ footer strong { color: var(--paper); }
     <div>
     <p class="wordmark footer-wordmark">Living Word Church</p>
     <p>Princess Drive, San Pedro Town, Ambergris Caye, Belize. <a href="https://livingwordchurchbelize.org/" target="_blank" rel="noopener">livingwordchurchbelize.org</a> and <a href="https://www.facebook.com/livingwordchurchbelize/" target="_blank" rel="noopener">Facebook</a></p>
-    <p>Crypto donations through <a href="https://nicky.me" target="_blank" rel="noopener">Nicky</a>.</p>
+    <p>In partnership with Caye Bank. Crypto donations through <a href="https://nicky.me" target="_blank" rel="noopener">Nicky</a>.</p>
     </div>
   </div>
 </footer>
@@ -618,36 +667,52 @@ footer strong { color: var(--paper); }
 
   (function () {
     const live = /^https:\/\//.test(NICKY_DONATION_URL);
+    const canDialog = typeof HTMLDialogElement === "function";
+
+    function wireDialog(dlg, closeIds) {
+      closeIds.forEach(function (id) {
+        document.getElementById(id).addEventListener("click", function () { dlg.close(); });
+      });
+      dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
+    }
+
+    // Crypto: a short "you're leaving this page" note before going to Nicky.
+    // Without dialog support the buttons simply open Nicky directly.
+    const leave = document.getElementById("leave");
+    const go = document.getElementById("leave-go");
     document.querySelectorAll("[data-donate]").forEach(function (a) {
-      if (live) {
-        a.href = NICKY_DONATION_URL;
-        a.target = "_blank";
-        a.rel = "noopener";
-      } else {
-        a.href = "#give";
+      if (!live) { if (!a.closest(".hero")) a.hidden = true; a.href = "#give"; return; }
+      a.href = NICKY_DONATION_URL;
+      a.target = "_blank";
+      a.rel = "noopener";
+      if (canDialog) {
+        a.addEventListener("click", function (e) { e.preventDefault(); leave.showModal(); });
       }
     });
     if (!live) {
-      document.getElementById("give-action").hidden = true;
       document.getElementById("give-pending").hidden = false;
-      return;
+    } else {
+      go.href = NICKY_DONATION_URL;
+      go.addEventListener("click", function () { setTimeout(function () { leave.close(); }, 0); });
+      wireDialog(leave, ["leave-back"]);
     }
 
-    // A short "you're leaving this page" note before going to Nicky.
-    // Without dialog support the buttons simply open Nicky directly.
-    const dlg = document.getElementById("leave");
-    const go = document.getElementById("leave-go");
-    go.href = NICKY_DONATION_URL;
-    if (!dlg || typeof dlg.showModal !== "function") return;
-    document.querySelectorAll("[data-donate]").forEach(function (a) {
-      a.addEventListener("click", function (e) {
-        e.preventDefault();
-        dlg.showModal();
+    // Check: show the mailing address in a dialog, with a copy button.
+    const check = document.getElementById("check-dialog");
+    const copy = document.getElementById("check-copy");
+    document.querySelectorAll("[data-check]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        copy.textContent = "Copy address";
+        if (canDialog) check.showModal(); else check.setAttribute("open", "");
       });
     });
-    go.addEventListener("click", function () { setTimeout(function () { dlg.close(); }, 0); });
-    document.getElementById("leave-back").addEventListener("click", function () { dlg.close(); });
-    dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
+    wireDialog(check, ["check-close"]);
+    copy.addEventListener("click", function () {
+      const text = document.getElementById("check-address").innerText.trim();
+      if (!navigator.clipboard) return;
+      navigator.clipboard.writeText(text).then(function () { copy.textContent = "Address copied"; },
+                                               function () { copy.textContent = "Copy failed, select the text instead"; });
+    });
   })();
 
   // Snowfall: a fixed, gentle set of flakes per snowy area. Static when reduced motion is requested.
