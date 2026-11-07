@@ -18,7 +18,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
 <style>
 :root {
   --court: #DDEFE7;      /* painted court mint */
@@ -29,6 +29,8 @@
   --mist: #CFE3DD;       /* light text on teal */
   --ribbon: #C8232C;     /* Christmas red */
   --tinsel: #F6C445;     /* toy-box yellow */
+  --lwc-orange: #F2931E; /* Living Word Church logo orange */
+  --lwc-maroon: #8B2B2B; /* Living Word Church logo figures */
   --line: #FFFFFF;
   --gutter: clamp(16px, 4vw, 40px);
   --measure: 62ch;
@@ -67,9 +69,12 @@ a:hover { text-decoration-thickness: 2px; }
 .night :focus-visible, .film :focus-visible, .give :focus-visible { outline-color: var(--tinsel); }
 
 .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 20px; }
-.brand { text-decoration: none; line-height: 1.15; }
-.brand strong { display: block; font-size: 1.125rem; font-weight: 750; letter-spacing: -0.01em; }
-.brand span { font-size: 0.875rem; color: var(--mist); }
+.wordmark { font-family: "Anton", "Bricolage Grotesque", sans-serif; font-weight: 400; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1; }
+.brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.brand-logo { width: clamp(58px, 6.5vw, 84px); height: auto; flex: none; }
+.brand-text { display: flex; flex-direction: column; gap: 5px; }
+.brand-text strong { font-size: clamp(1.375rem, 2.6vw, 2rem); }
+.brand-text span { font-size: 0.875rem; color: var(--mist); }
 
 /* Buttons */
 .btn {
@@ -109,7 +114,7 @@ a:hover { text-decoration-thickness: 2px; }
 .subhead {
   margin: 18px 0 0; max-width: 28ch; text-wrap: balance;
   font-size: clamp(1.375rem, 2.5vw, 2rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.01em;
-  color: var(--tinsel);
+  color: var(--lwc-orange);
 }
 .lead { margin: 24px 0 0; max-width: 52ch; font-size: clamp(1.125rem, 1.6vw, 1.3125rem); line-height: 1.55; color: var(--mist); }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
@@ -184,7 +189,11 @@ h2 {
   font-style: normal; font-weight: 600; line-height: 1.5;
 }
 .pending { margin: 0; padding: 18px 20px; border: 2px dashed rgba(255,255,255,.75); border-radius: 10px; font-weight: 600; }
-.facts { margin: 0; padding: 26px 26px 8px; background: rgba(0,0,0,.14); border-radius: 10px; }
+.facts { padding: 24px 26px 8px; background: rgba(0,0,0,.14); border-radius: 10px; }
+.facts dl { margin: 0; }
+.facts-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.facts-brand svg { width: 52px; height: auto; flex: none; }
+.facts-brand .wordmark { font-size: 1.5rem; }
 .facts dt { font-weight: 750; }
 .facts dd { margin: 2px 0 18px; color: #FBE3E3; }
 .give-foot { display: flex; justify-content: flex-end; margin-top: 24px; }
@@ -217,6 +226,9 @@ h2 {
 footer { background: var(--bleacher); color: var(--mist); padding-block: 44px; font-size: 0.9375rem; position: relative; z-index: 2; }
 footer p { margin: 0 0 6px; }
 footer strong { color: var(--paper); }
+.footer-grid { display: flex; align-items: center; gap: 20px; }
+.footer-logo { width: 84px; height: auto; flex: none; }
+.footer-wordmark { color: var(--paper); font-size: 1.75rem; margin-bottom: 10px; }
 
 @media (max-width: 760px) {
   .hero { grid-template-columns: 1fr; gap: 0; }
@@ -241,6 +253,24 @@ footer strong { color: var(--paper); }
         <path d="M-8.9-1.7-4.8-2.8-5.9-6.8M8.9 1.7 4.8 2.8 5.9 6.8"/>
         <path d="M-5.9 6.8-4.8 2.8-8.9 1.7M5.9-6.8 4.8-2.8 8.9-1.7"/>
       </g>
+    </symbol>
+    <!-- Living Word Church logo (vector redraw from the church's own artwork) -->
+    <symbol id="lwc-logo" viewBox="2 0 196 206">
+  <g fill="#fff" stroke="#fff" stroke-width="20" stroke-linejoin="round">
+    <path d="M14.0 168.0 Q 25 150 32.2 134.4 A80 80 0 1 1 167.8 134.4 Q 175 150 186.0 168.0 L100.0 99.0 Z"/><path d="M100.0 99.0 L14.0 168.0 L62 190 H138 L186.0 168.0 Z"/>
+  </g>
+  <path d="M14.0 168.0 Q 25 150 32.2 134.4 A80 80 0 1 1 167.8 134.4 Q 175 150 186.0 168.0 L100.0 99.0 Z" fill="#F2931E"/>
+  <path d="M100.0 99.0 L14.0 168.0 L62 190 H138 L186.0 168.0 Z" fill="#fff"/>
+  <rect x="94.7" y="26" width="10.6" height="76" fill="#fff"/>
+  <rect x="72.5" y="39" width="55" height="9.5" fill="#fff"/>
+  <g fill="#8B2B2B">
+    <circle cx="100" cy="119" r="7.4"/>
+    <path d="M86.5 131 H113.5 L112.5 182 H87.5 Z"/>
+    <circle cx="73.5" cy="131.5" r="6.2"/>
+    <path d="M63.5 143 H83.5 L82 182 H66 Z"/>
+    <circle cx="126.5" cy="131.5" r="6.2"/>
+    <path d="M116.5 143 H136.5 L134 182 H118 Z"/>
+  </g>
     </symbol>
     <!-- Original Santa bust, used in the hero and beside the timeline -->
     <symbol id="santa" viewBox="0 0 240 260">
@@ -296,8 +326,8 @@ footer strong { color: var(--paper); }
 
   <header class="wrap top">
     <a class="brand" href="#top">
-      <strong>Living Word Church</strong>
-      <span>San Pedro, Ambergris Caye, Belize</span>
+      <svg class="brand-logo" viewBox="2 0 196 206" aria-hidden="true"><use href="#lwc-logo"/></svg>
+      <span class="brand-text"><strong class="wordmark">Living Word Church</strong><span>San Pedro, Ambergris Caye, Belize</span></span>
     </a>
   </header>
 
@@ -529,14 +559,20 @@ footer strong { color: var(--paper); }
         </address>
       </div>
     </div>
-    <dl class="facts">
+    <div class="facts">
+      <div class="facts-brand">
+        <svg viewBox="2 0 196 206" aria-hidden="true"><use href="#lwc-logo"/></svg>
+        <span class="wordmark">Living Word Church</span>
+      </div>
+      <dl>
       <dt>Who runs the outreach</dt>
-      <dd>Living Word Church, Princess Drive, San Pedro Town, Ambergris Caye, Belize, led by Pastors Ian and Lourdes Zaldivar. Visit the church's <a href="https://livingwordchurchbelize.org/" target="_blank" rel="noopener">website</a> or <a href="https://www.facebook.com/livingwordchurchbelize/" target="_blank" rel="noopener">Facebook page</a>.</dd>
+      <dd>Based on Princess Drive, San Pedro Town, Ambergris Caye, Belize, and led by Pastors Ian and Lourdes Zaldivar. Visit the church's <a href="https://livingwordchurchbelize.org/" target="_blank" rel="noopener">website</a> or <a href="https://www.facebook.com/livingwordchurchbelize/" target="_blank" rel="noopener">Facebook page</a>.</dd>
       <dt>Where donations go</dt>
       <dd>Crypto donations go to a wallet that a volunteer manages on the church's behalf, for the Christmas Toy Campaign 2026. Checks go to Friends of the Living Word Church, a US charity that supports the church.</dd>
       <dt>When it happens</dt>
       <dd>Grocery deliveries and the toy giveaway take place in the days before Christmas.</dd>
-    </dl>
+      </dl>
+    </div>
   </div>
   <div class="wrap give-foot">
     <svg class="reindeer-hat" viewBox="0 0 240 260" aria-hidden="true">
@@ -566,9 +602,13 @@ footer strong { color: var(--paper); }
 </dialog>
 
 <footer>
-  <div class="wrap">
-    <p><strong>Living Word Church</strong>, Princess Drive, San Pedro Town, Ambergris Caye, Belize. <a href="https://livingwordchurchbelize.org/" target="_blank" rel="noopener">livingwordchurchbelize.org</a> and <a href="https://www.facebook.com/livingwordchurchbelize/" target="_blank" rel="noopener">Facebook</a></p>
+  <div class="wrap footer-grid">
+    <svg class="footer-logo" viewBox="2 0 196 206" aria-hidden="true"><use href="#lwc-logo"/></svg>
+    <div>
+    <p class="wordmark footer-wordmark">Living Word Church</p>
+    <p>Princess Drive, San Pedro Town, Ambergris Caye, Belize. <a href="https://livingwordchurchbelize.org/" target="_blank" rel="noopener">livingwordchurchbelize.org</a> and <a href="https://www.facebook.com/livingwordchurchbelize/" target="_blank" rel="noopener">Facebook</a></p>
     <p>Crypto donations through <a href="https://nicky.me" target="_blank" rel="noopener">Nicky</a>.</p>
+    </div>
   </div>
 </footer>
 
