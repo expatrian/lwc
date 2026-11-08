@@ -31,7 +31,6 @@
   --tinsel: #F6C445;     /* toy-box yellow */
   --lwc-orange: #F2931E; /* Living Word Church logo orange */
   --lwc-maroon: #8B2B2B; /* Living Word Church logo figures */
-  --caye-green: #0F6735; /* Caye International Bank brand green */
   --line: #FFFFFF;
   --gutter: clamp(16px, 4vw, 40px);
   --measure: 62ch;
@@ -209,16 +208,28 @@ h2 {
 .give-foot { display: flex; justify-content: flex-end; margin-top: 24px; }
 .reindeer-hat { width: clamp(110px, 12vw, 150px); margin-bottom: calc(-1 * clamp(64px, 9vw, 120px) - 46px); }
 
-/* Partner band, in Caye International Bank's green */
-.partner { background: var(--caye-green); color: #fff; padding-block: clamp(48px, 6vw, 80px); }
-.partner-grid { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
-.partner-logos { display: flex; align-items: center; gap: clamp(12px, 2vw, 20px); }
-.partner-lwc { width: clamp(64px, 8vw, 96px); height: auto; flex: none; }
-.partner-x { font-size: 2rem; line-height: 1; color: #CFE8D8; }
-.partner-card { display: block; background: #fff; border-radius: 14px; padding: clamp(12px, 1.6vw, 18px) clamp(14px, 2vw, 22px); }
-.partner-card img { display: block; width: clamp(170px, 20vw, 250px); height: auto; }
-.partner h2 { color: #fff; font-size: clamp(1.625rem, 3vw, 2.25rem); margin-bottom: 10px; }
-.partner p { margin: 0; max-width: 56ch; color: #DCEFE3; }
+/* Organizer and sponsors */
+.sponsors { background: #fff; }
+.sponsors h3 { margin: 0 0 14px; font-size: 1.125rem; font-weight: 750; color: var(--bleacher-soft); }
+.sponsors-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.9fr); gap: clamp(32px, 5vw, 64px); align-items: start; }
+.organizer { display: flex; align-items: center; gap: 16px; }
+.organizer svg { width: clamp(72px, 8vw, 96px); height: auto; flex: none; }
+.organizer .wordmark { display: block; font-size: clamp(1.5rem, 2.4vw, 1.875rem); color: var(--bleacher); }
+.organizer-place { display: block; margin-top: 6px; font-size: 0.9375rem; color: var(--bleacher-soft); }
+.sponsor-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; }
+.sponsor {
+  display: flex; align-items: center; justify-content: center; gap: 12px; height: 112px; padding: 16px 20px;
+  background: #fff; border: 2px solid #DCE9E5; border-radius: 16px; text-decoration: none; color: var(--bleacher);
+}
+.sponsor:hover { border-color: var(--bleacher-soft); text-decoration: none; }
+.sponsor img { max-width: 100%; max-height: 64px; width: auto; height: auto; }
+.sponsor-nicky { background: #000; border-color: #000; color: #fff; }
+.sponsor-nicky:hover { border-color: #000; background: #1c1c1c; }
+.sponsor-nicky img { width: 48px; height: 48px; }
+.sponsor-nicky span { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em; }
+.sponsor-open { flex-direction: column; gap: 4px; text-align: center; border-style: dashed; border-color: #A9C9C1; background: var(--paper); }
+.sponsor-open strong { font-size: 1.0625rem; }
+.sponsor-open span { font-size: 0.875rem; color: var(--bleacher-soft); }
 
 /* Map: Santa over Belize */
 .where-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(32px, 5vw, 64px); align-items: center; }
@@ -262,8 +273,11 @@ h2 {
 .other-field:focus-within { outline: 3px solid var(--bleacher); outline-offset: 2px; }
 .other-field input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; font: inherit; color: inherit; }
 .other-error { margin: 8px 0 0 !important; color: var(--ribbon); font-weight: 650; }
-@media (max-width: 480px) { .amounts { grid-template-columns: repeat(2, minmax(0, 1fr)); } .leave-body { padding: 24px 20px 20px; } }
+@media (max-width: 480px) { .amounts { grid-template-columns: repeat(2, minmax(0, 1fr)); } .leave-body { padding: 24px 20px 20px; } .leave-head { padding: 16px 20px; } }
 .leave :focus-visible { outline-color: var(--bleacher); }
+.leave-head { display: flex; align-items: center; gap: 14px; padding: 18px 28px; background: #000; color: #fff; }
+.leave-head h2 { margin: 0; color: #fff; }
+.leave-n { width: 48px; height: 48px; flex: none; display: block; }
 
 /* Footer */
 footer { background: var(--bleacher); color: var(--mist); padding-block: 44px; font-size: 0.9375rem; position: relative; z-index: 2; }
@@ -280,7 +294,7 @@ footer strong { color: var(--paper); }
   .years li { grid-template-columns: 1fr; gap: 4px; }
   .line-foot { min-height: 96px; }
   .photos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-  .where-grid, .partner-grid { grid-template-columns: 1fr; }
+  .where-grid, .sponsors-grid { grid-template-columns: 1fr; }
   .map { border-width: 3px; }
 }
 </style>
@@ -575,20 +589,6 @@ footer strong { color: var(--paper); }
   </div>
 </section>
 
-<section class="partner" aria-labelledby="partner-title">
-  <div class="wrap partner-grid">
-    <div class="partner-logos">
-      <svg class="partner-lwc" viewBox="2 0 196 206" role="img" aria-label="Living Word Church"><use href="#lwc-logo"/></svg>
-      <span class="partner-x" aria-hidden="true">&times;</span>
-      <span class="partner-card"><img src="/media/caye-bank-logo.png" width="383" height="96" alt="Caye International Bank"></span>
-    </div>
-    <div>
-      <h2 id="partner-title">In partnership with Caye International Bank</h2>
-      <p>Caye International Bank and its clients have been major supporters of Living Word Church's Christmas outreach in San Pedro, including in 2022 and 2024.</p>
-    </div>
-  </div>
-</section>
-
 <section class="film" id="film" aria-labelledby="film-title">
   <div class="wrap">
     <h2 id="film-title">The outreach in three minutes</h2>
@@ -649,6 +649,32 @@ footer strong { color: var(--paper); }
   </div>
 </section>
 
+<section class="sponsors" aria-labelledby="sponsors-title">
+  <div class="wrap">
+    <h2 id="sponsors-title">Organizer and sponsors</h2>
+    <div class="sponsors-grid">
+      <div>
+        <h3>Organizer</h3>
+        <div class="organizer">
+          <svg viewBox="2 0 196 206" aria-hidden="true"><use href="#lwc-logo"/></svg>
+          <span>
+            <span class="wordmark">Living Word Church</span>
+            <span class="organizer-place">San Pedro, Ambergris Caye, Belize</span>
+          </span>
+        </div>
+      </div>
+      <div>
+        <h3>Sponsors</h3>
+        <ul class="sponsor-list">
+          <li><a class="sponsor" href="https://www.cayebank.bz/" target="_blank" rel="noopener"><img src="/media/caye-bank-logo.png" width="383" height="96" alt="Caye International Bank"></a></li>
+          <li><a class="sponsor sponsor-nicky" href="https://nicky.me" target="_blank" rel="noopener"><img src="/media/nicky-n.png" width="48" height="48" alt=""><span>Nicky</span></a></li>
+          <li><a class="sponsor sponsor-open" href="https://www.facebook.com/livingwordchurchbelize/" target="_blank" rel="noopener"><strong>Your business here</strong><span>Message the church to sponsor the campaign</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <dialog class="leave" id="check-dialog" aria-labelledby="check-title">
   <div class="leave-body">
     <h2 id="check-title">Donate by check</h2>
@@ -666,8 +692,11 @@ Sewickley, PA 15143</address>
 </dialog>
 
 <dialog class="leave" id="leave" aria-labelledby="leave-title">
-  <div class="leave-body">
+  <div class="leave-head">
+    <img class="leave-n" src="/media/nicky-n.png" width="48" height="48" alt="">
     <h2 id="leave-title">Donate with Nicky</h2>
+  </div>
+  <div class="leave-body">
     <p>Your crypto donation is made on Nicky, an external website that opens in a new tab.</p>
     <ul>
       <li>Have your crypto wallet or exchange account ready.</li>
@@ -702,7 +731,7 @@ Sewickley, PA 15143</address>
     <div>
     <p class="wordmark footer-wordmark">Living Word Church</p>
     <p>Princess Drive, San Pedro Town, Ambergris Caye, Belize. <a href="https://livingwordchurchbelize.org/" target="_blank" rel="noopener">livingwordchurchbelize.org</a> and <a href="https://www.facebook.com/livingwordchurchbelize/" target="_blank" rel="noopener">Facebook</a></p>
-    <p>In partnership with Caye International Bank. Crypto donations through <a href="https://nicky.me" target="_blank" rel="noopener">Nicky</a>.</p>
+    <p>Sponsored by Caye International Bank and <a href="https://nicky.me" target="_blank" rel="noopener">Nicky</a>.</p>
     </div>
   </div>
 </footer>
