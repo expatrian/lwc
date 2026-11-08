@@ -225,8 +225,7 @@ h2 {
 .sponsor img { max-width: 100%; max-height: 64px; width: auto; height: auto; }
 .sponsor-nicky { background: #000; border-color: #000; color: #fff; }
 .sponsor-nicky:hover { border-color: #000; background: #1c1c1c; }
-.sponsor-nicky img { width: 48px; height: 48px; }
-.sponsor-nicky span { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em; }
+.sponsor-nicky img { height: 54px; width: auto; max-height: none; }
 .sponsor-open { flex-direction: column; gap: 4px; text-align: center; border-style: dashed; border-color: #A9C9C1; background: var(--paper); }
 .sponsor-open strong { font-size: 1.0625rem; }
 .sponsor-open span { font-size: 0.875rem; color: var(--bleacher-soft); }
@@ -277,7 +276,10 @@ h2 {
 .leave :focus-visible { outline-color: var(--bleacher); }
 .leave-head { display: flex; align-items: center; gap: 14px; padding: 18px 28px; background: #000; color: #fff; }
 .leave-head h2 { margin: 0; color: #fff; }
-.leave-n { width: 48px; height: 48px; flex: none; display: block; }
+.leave-head { justify-content: space-between; }
+.leave-logo { display: block; height: 46px; width: auto; }
+.leave-tag { font-size: 0.9375rem; font-weight: 650; color: #cfcfcf; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* Footer */
 footer { background: var(--bleacher); color: var(--mist); padding-block: 44px; font-size: 0.9375rem; position: relative; z-index: 2; }
@@ -667,7 +669,7 @@ footer strong { color: var(--paper); }
         <h3>Sponsors</h3>
         <ul class="sponsor-list">
           <li><a class="sponsor" href="https://www.cayebank.bz/" target="_blank" rel="noopener"><img src="/media/caye-bank-logo.png" width="383" height="96" alt="Caye International Bank"></a></li>
-          <li><a class="sponsor sponsor-nicky" href="https://nicky.me" target="_blank" rel="noopener"><img src="/media/nicky-n.png" width="48" height="48" alt=""><span>Nicky</span></a></li>
+          <li><a class="sponsor sponsor-nicky" href="https://nicky.me" target="_blank" rel="noopener"><img src="/media/nicky-logo-white.png" width="268" height="106" alt="Nicky"></a></li>
           <li><a class="sponsor sponsor-open" href="https://www.facebook.com/livingwordchurchbelize/" target="_blank" rel="noopener"><strong>Your business here</strong><span>Message the church to sponsor the campaign</span></a></li>
         </ul>
       </div>
@@ -693,8 +695,8 @@ Sewickley, PA 15143</address>
 
 <dialog class="leave" id="leave" aria-labelledby="leave-title">
   <div class="leave-head">
-    <img class="leave-n" src="/media/nicky-n.png" width="48" height="48" alt="">
-    <h2 id="leave-title">Donate with Nicky</h2>
+    <h2 id="leave-title"><span class="sr-only">Donate with </span><img class="leave-logo" src="/media/nicky-logo-white.png" width="268" height="106" alt="Nicky"></h2>
+    <span class="leave-tag">Crypto donation</span>
   </div>
   <div class="leave-body">
     <p>Your crypto donation is made on Nicky, an external website that opens in a new tab.</p>
