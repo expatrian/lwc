@@ -233,7 +233,7 @@ h2 {
 @media (prefers-reduced-motion: reduce) { .map-sleigh, .map-gifts, .map-pulse { animation: none; } }
 
 /* Before-you-go dialog for crypto donations */
-.leave { width: min(520px, calc(100vw - 32px)); padding: 0; border: 0; border-radius: 18px; background: var(--paper); color: var(--bleacher); box-shadow: 0 24px 60px rgba(5, 30, 30, .45); }
+.leave { width: min(540px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); overflow: auto; padding: 0; border: 0; border-radius: 18px; background: var(--paper); color: var(--bleacher); box-shadow: 0 24px 60px rgba(5, 30, 30, .45); }
 .leave::backdrop { background: rgba(10, 58, 59, .72); }
 .leave-body { padding: 28px 28px 24px; }
 .leave h2 { font-size: clamp(1.5rem, 4vw, 1.875rem); margin: 0 0 12px; }
@@ -241,6 +241,28 @@ h2 {
 .leave ul { margin: 0 0 22px; padding-left: 1.2em; }
 .leave li { margin-bottom: 8px; }
 .leave-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.leave ul { margin-bottom: 18px; }
+.amount-label { font-weight: 700; margin-bottom: 10px !important; }
+.amounts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 16px; }
+.amount {
+  display: flex; align-items: center; justify-content: center; min-height: 58px;
+  background: #000; color: #fff; border: 2px solid #000; border-radius: 12px;
+  font: inherit; font-size: 1.3125rem; font-weight: 800; text-decoration: none; cursor: pointer;
+}
+.amount:hover { background: #1c1c1c; border-color: #1c1c1c; text-decoration: none; }
+.amount-other { grid-column: 1 / -1; min-height: 50px; background: transparent; color: var(--bleacher); border-color: #B9D6CF; font-size: 1.0625rem; font-weight: 700; }
+.amount-other:hover, .amount-other[aria-expanded="true"] { background: var(--court); border-color: var(--bleacher-soft); }
+.other { margin: 0 0 18px; }
+.other label { display: block; font-weight: 700; margin-bottom: 8px; }
+.other-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.other-field {
+  flex: 1 1 140px; display: flex; align-items: center; gap: 6px; min-height: 52px; padding: 0 14px;
+  background: #fff; border: 2px solid var(--bleacher-soft); border-radius: 12px; font-size: 1.25rem; font-weight: 700;
+}
+.other-field:focus-within { outline: 3px solid var(--bleacher); outline-offset: 2px; }
+.other-field input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; font: inherit; color: inherit; }
+.other-error { margin: 8px 0 0 !important; color: var(--ribbon); font-weight: 650; }
+@media (max-width: 480px) { .amounts { grid-template-columns: repeat(2, minmax(0, 1fr)); } .leave-body { padding: 24px 20px 20px; } }
 .leave :focus-visible { outline-color: var(--bleacher); }
 
 /* Footer */
@@ -598,7 +620,6 @@ footer strong { color: var(--paper); }
           <span class="option-title">Donate by check</span>
         </button>
       </div>
-      <p class="pending" id="give-pending" hidden>Crypto donations open shortly. Please check back in a few days.</p>
       <noscript>
         <p class="give-intro">To donate by check, mail it to: Friends of the Living Word Church, C/O Nagel &amp; Associates, LLC, 409 Broad Street, Suite 103, Sewickley, PA 15143.</p>
       </noscript>
@@ -646,16 +667,30 @@ Sewickley, PA 15143</address>
 
 <dialog class="leave" id="leave" aria-labelledby="leave-title">
   <div class="leave-body">
-    <h2 id="leave-title">You're leaving this page</h2>
+    <h2 id="leave-title">Donate with Nicky</h2>
     <p>Your crypto donation is made on Nicky, an external website that opens in a new tab.</p>
     <ul>
       <li>Have your crypto wallet or exchange account ready.</li>
       <li>Choose from the list of cryptocurrencies the church accepts.</li>
-      <li>Give any amount you like.</li>
       <li>Your donation goes straight to the church's donation wallet. Nicky is non-custodial, so it never holds your funds.</li>
     </ul>
+    <p class="amount-label" id="amount-label">Choose an amount in US dollars. You pay the equivalent in crypto.</p>
+    <div class="amounts" role="group" aria-labelledby="amount-label">
+      <a class="amount" data-amount="10" href="#give" target="_blank" rel="noopener">$10</a>
+      <a class="amount" data-amount="20" href="#give" target="_blank" rel="noopener">$20</a>
+      <a class="amount" data-amount="50" href="#give" target="_blank" rel="noopener">$50</a>
+      <a class="amount" data-amount="100" href="#give" target="_blank" rel="noopener">$100</a>
+      <button class="amount amount-other" type="button" id="other-toggle" aria-expanded="false" aria-controls="other">Other amount</button>
+    </div>
+    <div class="other" id="other" hidden>
+      <label for="other-input">Your amount in US dollars</label>
+      <div class="other-row">
+        <span class="other-field"><span aria-hidden="true">$</span><input id="other-input" type="text" inputmode="decimal" autocomplete="off" placeholder="75" aria-describedby="other-error"></span>
+        <a class="btn btn-nicky" id="other-go" href="#give" target="_blank" rel="noopener"><img class="nicky-n" src="/media/nicky-n.png" width="24" height="24" alt="">Continue to Nicky</a>
+      </div>
+      <p class="other-error" id="other-error" hidden>Enter an amount of at least $1, such as 75 or 37.50.</p>
+    </div>
     <div class="leave-actions">
-      <a class="btn btn-nicky" id="leave-go" href="#give" target="_blank" rel="noopener"><img class="nicky-n" src="/media/nicky-n.png" width="24" height="24" alt="">Continue to Nicky</a>
       <button class="btn btn-quiet" type="button" id="leave-back">Go back</button>
     </div>
   </div>
@@ -673,11 +708,31 @@ Sewickley, PA 15143</address>
 </footer>
 
 <script>
-  // Paste the Nicky donation link here. While it is empty, the page shows "Crypto donations open shortly".
-  const NICKY_DONATION_URL = "https://pay.nicky.me/s/NS66C";
+  // Nicky settings. Preset and "Other amount" buttons open a pre-filled payment order;
+  // the profile link is only used by old browsers that can't show the pop-up.
+  const NICKY_PAYMENT_ORDER_URL = "https://pay.nicky.me/payment-order/NS66C";
+  const NICKY_PROFILE_URL = "https://pay.nicky.me/s/NS66C";
+  const NICKY_SETTLEMENT_ASSET = "USD";
+  const CAMPAIGN_REFERENCE = "Christmas Toy Campaign 2026";
+  const MIN_AMOUNT = 1;
+
+  function nickyOrderUrl(amount) {
+    return NICKY_PAYMENT_ORDER_URL +
+      "?amount=" + encodeURIComponent(amount) +
+      "&settlementAsset=" + encodeURIComponent(NICKY_SETTLEMENT_ASSET) +
+      "&reference=" + encodeURIComponent(CAMPAIGN_REFERENCE);
+  }
+
+  // "75", "$75", "1,250", "37.5" -> "75", "75", "1250", "37.50"; anything else -> null
+  function parseAmount(raw) {
+    const t = String(raw).replace(/[\s$,]/g, "");
+    if (!/^\d+(\.\d{1,2})?$/.test(t)) return null;
+    const n = Number(t);
+    if (!(n >= MIN_AMOUNT) || n > 1000000) return null;
+    return Number.isInteger(n) ? String(n) : n.toFixed(2);
+  }
 
   (function () {
-    const live = /^https:\/\//.test(NICKY_DONATION_URL);
     const canDialog = typeof HTMLDialogElement === "function";
 
     function wireDialog(dlg, closeIds) {
@@ -686,27 +741,68 @@ Sewickley, PA 15143</address>
       });
       dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
     }
+    function closeSoon(dlg) { setTimeout(function () { dlg.close(); }, 0); }
 
-    // Crypto: a short "you're leaving this page" note before going to Nicky.
-    // Without dialog support the buttons simply open Nicky directly.
+    // Crypto: every "Donate with Nicky" button opens the pop-up (disclaimer + amounts).
     const leave = document.getElementById("leave");
-    const go = document.getElementById("leave-go");
+    const toggle = document.getElementById("other-toggle");
+    const other = document.getElementById("other");
+    const input = document.getElementById("other-input");
+    const otherGo = document.getElementById("other-go");
+    const error = document.getElementById("other-error");
+
+    function resetPopup() {
+      other.hidden = true;
+      toggle.setAttribute("aria-expanded", "false");
+      input.value = "";
+      input.removeAttribute("aria-invalid");
+      error.hidden = true;
+      otherGo.href = "#give";
+    }
+
     document.querySelectorAll("[data-donate]").forEach(function (a) {
-      if (!live) { if (!a.closest(".hero")) a.hidden = true; a.href = "#give"; return; }
-      a.href = NICKY_DONATION_URL;
+      a.href = NICKY_PROFILE_URL;
       a.target = "_blank";
       a.rel = "noopener";
       if (canDialog) {
-        a.addEventListener("click", function (e) { e.preventDefault(); leave.showModal(); });
+        a.addEventListener("click", function (e) { e.preventDefault(); resetPopup(); leave.showModal(); });
       }
     });
-    if (!live) {
-      document.getElementById("give-pending").hidden = false;
-    } else {
-      go.href = NICKY_DONATION_URL;
-      go.addEventListener("click", function () { setTimeout(function () { leave.close(); }, 0); });
-      wireDialog(leave, ["leave-back"]);
-    }
+
+    leave.querySelectorAll("[data-amount]").forEach(function (a) {
+      a.href = nickyOrderUrl(a.getAttribute("data-amount"));
+      a.addEventListener("click", function () { closeSoon(leave); });
+    });
+
+    toggle.addEventListener("click", function () {
+      const open = other.hidden;
+      other.hidden = !open;
+      toggle.setAttribute("aria-expanded", String(open));
+      if (open) input.focus();
+    });
+
+    input.addEventListener("input", function () {
+      const amount = parseAmount(input.value);
+      otherGo.href = amount ? nickyOrderUrl(amount) : "#give";
+      if (amount) { error.hidden = true; input.removeAttribute("aria-invalid"); }
+    });
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") { e.preventDefault(); otherGo.click(); }
+    });
+    otherGo.addEventListener("click", function (e) {
+      const amount = parseAmount(input.value);
+      if (!amount) {
+        e.preventDefault();
+        error.hidden = false;
+        input.setAttribute("aria-invalid", "true");
+        input.focus();
+        return;
+      }
+      otherGo.href = nickyOrderUrl(amount);
+      closeSoon(leave);
+    });
+
+    wireDialog(leave, ["leave-back"]);
 
     // Check: show the mailing address in a dialog, with a copy button.
     const check = document.getElementById("check-dialog");
